@@ -1,11 +1,40 @@
 <!-- 添加最后的图标引脚 -->
 <footer class="footer">
 <hr>
-{{- range $index, $key := .Site.Params.Social -}}
-<!-- <a class="soc" href="{{ $key.url }}" title="{{ $key.name }}"><ion-icon name="logo-github"></ion-icon></a> -->
-<a class="soc" href="{{ $key.url }}" title="{{ $key.name }}"><i data-feather="{{ $key.icon }}"></i></a>
-<!-- -->
-{{- end -}}
+<div style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+      {{- range $index, $key := .Site.Params.Social -}}
+      <a class="soc" href="{{ $key.url }}" title="{{ $key.name }}"><i data-feather="{{ $key.icon }}"></i></a>
+      <!-- -->
+      {{- end -}}
+      </div>
+
+      <div class="no-ai-logo">
+            <embed src="{{ "svg/no-ai-white.svg" | relURL }}"
+                   type="image/svg+xml"
+                   width="128" height="37">
+            <embed src="{{ "svg/no-ai-black.svg" | relURL }}"
+                   type="image/svg+xml"
+                   width="128" height="37">
+          </div>
+      </div>
+      <style>
+      .no-ai-logo embed {
+            display: none;
+      }
+      @media (prefers-color-scheme: light) {
+            .no-ai-logo embed[src$="no-ai-white.svg"] {
+              display: block;
+            }
+          }
+          @media (prefers-color-scheme: dark) {
+            .no-ai-logo embed[src$="no-ai-black.svg"] {
+              display: block;
+            }
+          }
+      </style>
+</div>
+
 </footer>
 
 <script>
