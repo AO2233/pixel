@@ -1,31 +1,27 @@
-<!DOCTYPE html>
-<!-- 首页界面 -->
-<html>
-	{{- partial "head.html" . -}}
-	<body>
-		<div class="content">
-			{{- partial "header.html" . -}}
-			<main class="list">
-				<div class="site-description">
-					{{- if isset .Site.Params "subtitle" -}}
-					<p class="site-description">{{ .Site.Params.Subtitle | markdownify }}</p>
-					{{- end -}}
-				</div>
+{{ define "main" }}
+  {{ if isset .Data "Term" }}
+    <h2 class="page-title">{{ .Data.Term }}</h1>
+  {{ else }}
+    <h2 class="page-title">Posts</h1>
+  {{ end }}
 
-				{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-				{{ $paginator := .Paginate ($pages) }}
-				{{ range $paginator.Pages }}
-
-				<article>
-				<h1 class="title">{{.Title}}</a></h1>
-				<time>{{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</time> 
-				{{ .Content }}
-				</article>
-				{{ end }}
-				{{- partial "paginator.html" . -}}
-			</main>
-			{{- partial "footer.html" . -}}
-		</div>
-		
-	</body>
-</html>
+  <main class="list">
+    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    {{ $paginator := .Paginate $posts .Site.Params.paginate }}
+    {{ $grouped := $paginator.Pages.GroupByDate "2006" }}
+    {{ range $grouped }}
+      <h1 class="year-heading">{{ .Key }}</h2>
+      {{ range .Pages }}
+        <section>
+          <a class="list-item" href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <span class="meta">
+            {{ dateFormat "Jan 2, 2006" .Date }}
+            {{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}
+          </span>
+        </section>
+      {{ end }}
+    {{ end }}
+    
+    {{ partial "paginator.html" . }}
+  </main>
+{{ end }}

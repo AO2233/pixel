@@ -50,7 +50,7 @@ menu:
     #   url: /
     #   weight: 1
     - name: Archive
-      url: /posts
+      url: /
       weight: 2
     
     # - name: Tag
