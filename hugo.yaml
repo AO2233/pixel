@@ -53,9 +53,9 @@ menu:
       url: /posts
       weight: 2
     
-    - name: Tag
-      url: /tags
-      weight: 3
+    # - name: Tag
+    #   url: /tags
+    #   weight: 3
 
     - name: About
       url: /about
