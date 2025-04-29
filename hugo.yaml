@@ -4,9 +4,9 @@ title: 帰宅部
 theme: pixel
 copyright: MIT License
 
-# taxonomies: {} # remove tags, categories, https://gohugo.io/content-management/taxonomies/
-taxonomies:
-  tag: tags
+taxonomies: {} # remove tags, categories, https://gohugo.io/content-management/taxonomies/
+# taxonomies:
+#   tag: tags
 
 pagination:
   pagerSize: 1
