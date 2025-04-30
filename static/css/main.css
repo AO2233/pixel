@@ -31,7 +31,7 @@ body{
 }
 
 html, p {
-  font-family: 'ZpixA', 'Fpp', 'DOS-c', 'Sarasa Mono Slab SC';
+  font-family: 'ZpixA', 'DOS-c', 'Sarasa Mono Slab SC';
   font-size: 1em;
   line-height: 1.6em; /* 1.6 中文 */
   cursor: default !important;
