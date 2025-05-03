@@ -32,7 +32,7 @@ body{
 
 html, p {
   font-family: 'ZpixA', 'DOS-c', 'Sarasa Mono Slab SC';
-  font-size: 1em;
+  font-size: 1rem;
   line-height: 1.6em; /* 1.6 中文 */
   cursor: default !important;
   /* if you want indent */
@@ -398,3 +398,11 @@ a[href^="#fn:"]:after{ content: '>' }
   background: var(--hovercolor); 
   width: 0%;
 }
+
+	/* 禁止 iOS Safari 在横屏（及任何情况下）自动放大文字 */
+  html {
+    -webkit-text-size-adjust: 100% !important;
+    -moz-text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+  }
