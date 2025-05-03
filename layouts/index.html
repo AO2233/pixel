@@ -1,9 +1,16 @@
 {{ define "main" }}
-  {{ if isset .Data "Term" }}
+
+  <div class="site-description">
+    {{- if isset .Site.Params "subtitle" -}}
+    <p class="site-description">{{ .Site.Params.Subtitle | markdownify }}</p>
+    {{- end -}}
+  </div>
+
+  <!-- {{ if isset .Data "Term" }}
     <h2 class="page-title">{{ .Data.Term }}</h1>
   {{ else }}
     <h2 class="page-title">Posts</h1>
-  {{ end }}
+  {{ end }} -->
 
   <main class="list">
     {{ $posts := where .Site.RegularPages "Section" "posts" }}
