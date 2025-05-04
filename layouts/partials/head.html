@@ -3,6 +3,10 @@
 	<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
 	<meta name=viewport content="width=device-width,initial-scale=1">
 
+	{{ with .OutputFormats.Get "rss" }}
+  		{{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+	{{ end }}
+
 	{{- $title := ( .Title ) -}}
 	{{- $siteTitle := ( .Site.Title ) -}}
 	<!-- {{- if .IsHome -}}
