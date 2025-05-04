@@ -1,9 +1,17 @@
 {{ define "main" }}
-  {{ if isset .Data "Term" }}
-    <h2 class="page-title">{{ .Data.Term }}</h1>
-  {{ else }}
-    <h2 class="page-title">Posts</h1>
-  {{ end }}
+
+<div class="site-description">
+  {{- if isset .Site.Params "subtitle" -}}
+  <p class="site-description">{{ .Site.Params.Subtitle | markdownify }}</p>
+  {{- end -}}
+</div>
+
+<!-- {{ if isset .Data "Term" }}
+<h2>{{ .Data.Term }}</h2>
+{{ else }}
+<h2 class="page-title">{{ .Title }}</h2>
+{{ end }} -->
+<!-- 无需指示 目前的section位置 -->
 
   <main class="list">
     {{ $paginator := $.Paginator .Site.Params.paginate }}
@@ -23,4 +31,5 @@
     
     {{ partial "paginator.html" . }}
   </main>
-{{ end }}
+<!-- POST 之类的渲染 -->
+  {{ end }}

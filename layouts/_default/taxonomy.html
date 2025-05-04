@@ -1,8 +1,8 @@
 {{ define "main" }}
   {{ if isset .Data "Term" }}
-    <h2 class="page-title">{{ .Data.Term }}</h1>
+    <h2 class="page-title">{{ .Data.Term }}</h2>
   {{ else }}
-    <h2 class="page-title">Posts</h1>
+    <h2 class="page-title">Posts</h2>
   {{ end }}
 
   <main class="list">
@@ -19,4 +19,6 @@
     
     {{ partial "paginator.html" . }}
   </main>
+  <!-- TAG 之类的渲染、此界面被弃用 -->
 {{ end }}
+
