@@ -1,11 +1,13 @@
-:root{
+/* ======================== CSS 变量定义 ======================== */
+:root {
   --maincolor: red;
-  --bordercl:rebeccapurple;
-  --callouctcolor: deepskyblue;;
+  --bordercl: rebeccapurple;
+  --callouctcolor: deepskyblue;
   --hovercolor: crimson;
   --darkcolor: #50fa7b;
 }
 
+/* ======================== 全局选择器样式 ======================== */
 ::-moz-selection {
   background: var(--maincolor);
   color: #fff; /* text color */
@@ -16,20 +18,12 @@
   color: #fff; /* text color */
 }
 
-body{
-  display: block;
-  cursor: default;
-  /* margin: 8px; */
+/* 全局光标设置 */
+* {
+  cursor: default !important;
 }
 
-/* container */
-.content {
-  margin: 0 auto 5rem auto; /* top right bottom left */
-  /* min-width: 375px; */
-  max-width: 1080px;
-  word-wrap: break-word;
-}
-
+/* ======================== 基础元素样式 ======================== */
 html, p {
   font-family: 'ZpixA', 'DOS-c', 'Sarasa Mono Slab SC';
   font-size: 1rem;
@@ -39,10 +33,34 @@ html, p {
   /* text-indent: 2rem; */
 }
 
+/* 禁止 iOS Safari 在横屏（及任何情况下）自动放大文字 */
+html {
+  -webkit-text-size-adjust: 100% !important;
+  -moz-text-size-adjust: 100% !important;
+  -ms-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+}
+
+body {
+  display: block;
+  cursor: default;
+  /* margin: 8px; */
+}
+
 div {
   cursor: default !important;
 }
 
+/* ======================== 容器布局 ======================== */
+/* container */
+.content {
+  margin: 0 auto 5rem auto; /* top right bottom left */
+  /* min-width: 375px; */
+  max-width: 1080px;
+  word-wrap: break-word;
+}
+
+/* ======================== 文本元素样式 ======================== */
 hr {
   border: 0;
   border-top: 3px dotted var(--bordercl);
@@ -56,6 +74,7 @@ blockquote {
   padding-left: 1em;
 }
 
+/* ======================== 链接样式 ======================== */
 a {
   border-bottom: 3px solid var(--maincolor);
   color: inherit;
@@ -65,10 +84,11 @@ a {
 }
 
 a:hover {
-    background-color: var(--hovercolor);
-    color: #fff;
+  background-color: var(--hovercolor);
+  color: #fff;
 }
 
+/* ======================== 列表样式 ======================== */
 ul {
   list-style: none;
   padding-left: 2ch; /* 2 english char indent */
@@ -83,16 +103,16 @@ ul > li::before {
   font-weight: bold;
 }
 
-/* Images */
+/* ======================== 图片样式 ======================== */
 img {
   border: 3px solid #ececec;
   max-width: 100%;
   display: block;
-  margin:0 auto;
+  margin: 0 auto;
   cursor: default;
 }
 
-/* ======================== 代码框 ======================== */
+/* ======================== 代码框样式 ======================== */
 code {
   background-color: #f1f1f1;
   padding: .1rem .2rem;
@@ -112,24 +132,27 @@ pre code {
   font-family: 'DOS','DOS-c','ZpixA','Sarasa Mono Slab SC';
 }
 
-.highlight ::selection { background:pink; color: inherit;}
+.highlight ::selection { 
+  background: pink; 
+  color: inherit;
+}
 
-/* 开头数字 */
+/* 代码行号样式 */
 .ln {
-  margin-right:1rem;
-  user-select:none;
+  margin-right: 1rem;
+  user-select: none;
   color: gray;
 }
 
-/* 底色框 */
+/* 代码块背景框 */
 .chroma {
   border-radius: 0;
   background-color: #ececec;
   padding: 0.5em;
 }
-/* ======================== 代码框 ======================== */
 
-/* ======================== header ======================== */
+/* ======================== 标题样式 ======================== */
+/* 头部区域布局 */
 header {
   display: flex;
   flex-wrap: wrap;
@@ -138,6 +161,7 @@ header {
   font-size: 1.6rem;
 }
 
+/* 标题字体大小 */
 h1, h2, h3, h4, h5, h6 {
   font-size: 1.2rem;
 }
@@ -157,70 +181,66 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.2rem;
 }
 
-
-/* ======================== header ======================== */
-
-/* ======================== 强调样式 ======================== */
+/* ======================== 标题前缀样式 ======================== */
 h1::before { color: var(--maincolor); content: '# '; }
 h2::before { color: var(--maincolor); content: '✚ '; }
 h3::before { color: var(--maincolor); content: '□ '; }
 h4::before { color: var(--maincolor); content: '◇ '; }
 h5::before { color: var(--maincolor); content: '■ '; }
 h6::before { color: var(--maincolor); content: '◆ '; }
-/* ======================== 强调样式 ======================== */
 
-/* ======================== 时间搓 ======================== */
+/* ======================== 时间戳样式 ======================== */
 .meta, time {
   color: #999;
 }
-/* ======================== 时间搓 ======================== */
 
-/*  ======================== 引脚  ======================== */
+/* ======================== 页脚样式 ======================== */
 footer {
   margin-top: 1em;
 }
 
+/* 社交媒体图标 */
 .soc {
   font-size: 26px;
-  padding:0;
+  padding: 0;
 }
 
-.soc svg{
+.soc svg {
   max-height: 20px;
   width: auto;
 }
-.soc:hover{
+
+.soc:hover {
   color: white;
 }
-/*  ======================== 引脚  ======================== */
 
-/* 草稿标签 */
-.draft-label{ 
-    color: var(--bordercl);
-    text-decoration: none;
-    padding: 2px 4px;
-    border-radius: 4px;
-    margin-left: 6px;
-    background-color: #f9f2f4;
+/* ======================== 草稿标签样式 ======================== */
+.draft-label { 
+  color: var(--bordercl);
+  text-decoration: none;
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-left: 6px;
+  background-color: #f9f2f4;
 }
 
-/* table */
+/* ======================== 表格样式 ======================== */
 table {
   border-spacing: 0;
   border-collapse: collapse;
   overflow-x: auto;
 }
 
-table td, th{
+table td, th {
   padding: 6px 13px;
   border: 1px solid #dfe2e5;
 }
 
-table th{
+table th {
   font-size: large;
 }
 
-/* ============= 滚动条 ============= */
+/* ======================== 滚动条样式 ======================== */
 ::-webkit-scrollbar {
   width: 0px;
   height: 0px
@@ -235,16 +255,15 @@ table th{
   background: #555; 
 }
 
-.box::-webkit-scrollbar{
-  display:none
+.box::-webkit-scrollbar {
+  display: none
 }
-/* ============= 滚动条 ============= */
 
-/* 引用设置 */
-a[href^="#fn:"]:before{ content: '<' }
-a[href^="#fn:"]:after{ content: '>' }
+/* ======================== 脚注引用样式 ======================== */
+a[href^="#fn:"]:before { content: '<' }
+a[href^="#fn:"]:after { content: '>' }
 
-/*  ============== 引脚设置 ============== */
+/* ======================== 分页导航样式 ======================== */
 .pagination {
   margin: 0;
   padding: 0;
@@ -260,9 +279,8 @@ a[href^="#fn:"]:after{ content: '>' }
 .pagination .page-next {
   text-align: right;
 }
-/*  ============== 引脚设置 ============== */
 
-/* ========== collapsible bar ========== */
+/* ======================== 折叠栏样式 ======================== */
 .collapsible {
   border: 1px solid #444;
   overflow: hidden;
@@ -304,17 +322,15 @@ a[href^="#fn:"]:after{ content: '>' }
   from { opacity: 0; }
   to { opacity: 1; }
 }
-/* ========== collapsible bar ========== */
 
-/* ========== callout ========== */
+/* ======================== 标注框样式 ======================== */
 .callout {
   border-left: 0.3rem solid crimson;
   background-color: #EEE;
   padding: 0.1rem 1rem;
 }
-/* ========== callout ========== */
 
-/* ========== Danburoo Cat ============ */
+/* ======================== Danbooru 计数器样式 ======================== */
 .dateDisplay {
   display: flex;
   align-items: center;
@@ -328,29 +344,29 @@ a[href^="#fn:"]:after{ content: '>' }
   max-width: 10%;
   max-height: 10rem;
 }
-/* ========== Danburoo Cat ============ */
 
-/* ============== hook ============= */
-/* Dplayer */
+/* ======================== 第三方插件样式修复 ======================== */
+/* Dplayer 全屏图标隐藏 */
 .dplayer-full-in-icon {
   display: none !important;
 }
 
-/* fix hugo short code style problem  */
+/* Hugo shortcode 样式问题修复 */
 .twitter-tweet-rendered {
-  display:block;
-  margin-left:auto;
-  margin-right:auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* KaTeX */
-.katex-display{
+/* KaTeX 数学公式样式 */
+.katex-display {
   max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
+/* 列表项样式 */
 .list-item {
   border-bottom: none;
   color: #333;
@@ -358,15 +374,7 @@ a[href^="#fn:"]:after{ content: '>' }
   padding: 0.2rem;
 }
 
-* {
-  cursor: default !important;
-}
-
-/* ============== hook ============= */
-
-
-/* ============== moe-wiki ============= */
-
+/* ======================== 萌娘百科样式 ======================== */
 .moe-mask {
   color: transparent;
   background-color: black;
@@ -380,7 +388,7 @@ a[href^="#fn:"]:after{ content: '>' }
   background-color: transparent;
 }
 
-/* ============== progress bar ============= */
+/* ======================== 进度条样式 ======================== */
 #progress-container {
   position: fixed;
   top: 0;
@@ -398,11 +406,3 @@ a[href^="#fn:"]:after{ content: '>' }
   background: var(--hovercolor); 
   width: 0%;
 }
-
-	/* 禁止 iOS Safari 在横屏（及任何情况下）自动放大文字 */
-  html {
-    -webkit-text-size-adjust: 100% !important;
-    -moz-text-size-adjust: 100% !important;
-    -ms-text-size-adjust: 100% !important;
-    text-size-adjust: 100% !important;
-  }
