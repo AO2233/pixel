@@ -326,7 +326,7 @@ a[href^="#fn:"]:after { content: '>' }
 /* ======================== 标注框样式 ======================== */
 .callout {
   border-left: 0.3rem solid crimson;
-  background-color: #EEE;
+  background-color: #FFF;
   padding: 0.1rem 1rem;
 }
 
