@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400;
   src: local('Zpix');
-  src: url('../fonts/zpix.woff2'); /* https://github.com/SolidZORO/zpix-pixel-font 12px */
+  src: url('../fonts/zpix_fusion.woff2'); /* https://github.com/SolidZORO/zpix-pixel-font 12px */
 }
 
 @font-face {

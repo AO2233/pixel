@@ -67,6 +67,10 @@ hr {
   margin: 1em 0;
 }
 
+ol {
+  padding-inline-start: 2em; /* 2 english char indent */
+}
+
 blockquote {
   border-left: 3px solid var(--bordercl);
   color: #737373;
