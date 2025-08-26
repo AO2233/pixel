@@ -3,18 +3,18 @@
   font-style: normal;
   font-weight: 400;
   src: local('Zpix');
-  src: url('../fonts/zpix.woff2'); /* Google */
+  src: url('../fonts/zpix.woff2'); /* https://github.com/SolidZORO/zpix-pixel-font 12px */
+}
+
+@font-face {
+  font-family: 'fusion';
+  font-style: normal;
+  font-weight: 400;
+  src: local('fusion');
+  src: url('../fonts/fusion.woff2'); /* https://github.com/TakWolf/fusion-pixel-font 12px */
 }
 
 /* code */
-@font-face {
-  font-family: 'Sarasa Mono Slab SC';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Sarasa Mono Slab SC');
-  src: url('../fonts/sarasa-mono-slab-sc-regular.woff2'); /* Chrome */
-}
-
 @font-face {
   font-family: 'DOS';
   font-style: normal;
@@ -27,11 +27,4 @@
   font-style: normal;
   font-weight: 400;
   src: url('../fonts/ipix.woff2'); /* Chrome */
-}
-
-@font-face {
-  font-family: 'Silver';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/Silver.woff2');
 }
