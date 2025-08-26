@@ -29,8 +29,12 @@ code {
   color: var(--darkbgcolor);
 }
 
+a code {
+  color: inherit;
+}
+
 pre code {
-  color: white;
+  color: inherit;
 }
 /* =================== */
 
@@ -42,26 +46,11 @@ blockquote {
   border-color: palevioletred;
 }
 
-h1::before {
-  color: var(--darkcolor);
-}
-
-h2::before {
-  color: var(--darkcolor);
-}
-
-h3::before {
-  color: var(--darkcolor);
-}
-
-h4::before {
-  color: var(--darkcolor);
-}
-
-h5::before {
-  color: var(--darkcolor);
-}
-
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
 h6::before {
   color: var(--darkcolor);
 }
@@ -71,7 +60,7 @@ a {
   color: inherit;
 }
 
-a:hover {
+a:hover, a code:hover {
   background-color: var(--darkcolor);
   color: black;
 }
