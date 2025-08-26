@@ -2,7 +2,6 @@
 baseURL: https://ao2233.github.io/
 title: 帰宅部
 theme: pixel
-copyright: MIT License
 
 taxonomies: {} # remove tags, categories, https://gohugo.io/content-management/taxonomies/
 # taxonomies:
@@ -53,25 +52,12 @@ menu:
       url: /
       weight: 2
     
-    # - name: Tag
-    #   url: /tags
-    #   weight: 3
-
     - name: About
       url: /about
-      weight: 4
+      weight: 3
 
 defaultContentLanguage: en
 #defaultContentLanguageInSubdir: false
-
-# languages:
-#  en:
-#    languageCode: "en"
-#    weight: 2
-#  zh:
-#    languageCode: "zh"
-#    weight: 1
-#    title: "归宅部"
 
 ########
 # code 
@@ -83,34 +69,6 @@ pygmentscodefencesguesssyntax: true
 # markup & code
 markup:
   defaultMarkdownHandler: goldmark
-  asciidocExt:
-    backend: html5
-    extensions: []
-    failureLevel: fatal
-    noHeaderOrFooter: true
-    preserveTOC: false
-    safeMode: unsafe
-    sectionNumbers: false
-    trace: false
-    verbose: false
-    workingFolderCurrent: false
-    attributes: {}
-  blackFriday:
-    angledQuotes: false
-    footnoteAnchorPrefix: ""
-    footnoteReturnLinkContents: ""
-    fractions: true
-    hrefTargetBlank: false
-    latexDashes: true
-    nofollowLinks: false
-    noreferrerLinks: false
-    plainIDAnchors: true
-    skipHTML: false
-    smartDashes: true
-    smartypants: true
-    smartypantsQuotesNBSP: false
-    taskLists: true
-
   goldmark:
     extensions:
       definitionList: true
@@ -119,7 +77,6 @@ markup:
       strikethrough: true
       table: true
       taskList: true
-      typographer: false
       passthrough:
         delimiters:
           block:
@@ -139,7 +96,6 @@ markup:
     renderer:
     #   hardWraps: false # markdown里的换行符是否被解释为换行 
         unsafe: true # 是否允许渲染html标签
-    #   xhtml: false 
   
   highlight:
     anchorLineNos: false
@@ -158,8 +114,12 @@ markup:
 
 outputs:
   home:
-    - HTML
-    - RSS
+  - html
+  - rss
   section:
-    - HTML
-    - RSS
+  - html
+  - rss
+  taxonomy:
+  - html
+  term:
+  - html

@@ -1,7 +1,6 @@
 :root {
   --mermaid-theme: dark;
-  --darkbgcolor: #202124
-  /* base, dark, forest, neutral, night */
+  --darkbgcolor: #202124 /* base, dark, forest, neutral, night */;
 }
 
 body {
@@ -60,7 +59,8 @@ a {
   color: inherit;
 }
 
-a:hover, a code:hover {
+a:hover,
+a code:hover {
   background-color: var(--darkcolor);
   color: black;
 }
@@ -86,7 +86,7 @@ a:hover, a code:hover {
 
 /* 代码块 */
 .chroma {
-  background-color: #1c1c1c
+  background-color: #1c1c1c;
 }
 
 .highlight pre code[class*="language-"]::before {
@@ -114,7 +114,7 @@ a:hover, a code:hover {
 
 /* 伸缩 Box */
 .collapsible {
-  border: 1px solid #AAA;
+  border: 1px solid #aaa;
   box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
@@ -124,12 +124,12 @@ a:hover, a code:hover {
 }
 
 blockquote {
-  color: #EEE;
+  color: #eee;
 }
 
 .list-item {
   border-bottom: none;
-  color: #EEE;
+  color: #eee;
   line-height: 1.7em;
 }
 
@@ -148,7 +148,7 @@ blockquote {
 
 #progress-bar {
   height: 100%;
-  background: var(--darkcolor); 
+  background: var(--darkcolor);
   width: 0%;
   transition: width 0.25s ease-out;
 }

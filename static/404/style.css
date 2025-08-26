@@ -359,5 +359,5 @@ tr.parent a[href^="/"] {
 }
 
 body, h1, .errorCode, p {
-  font-family: 'ZpixA', 'fusion';
+  font-family: "DOS", "ZpixA", "fusion", "DOS-c";
 }

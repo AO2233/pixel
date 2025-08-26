@@ -24,8 +24,9 @@
 }
 
 /* ======================== 基础元素样式 ======================== */
-html, p {
-  font-family: 'ZpixA', 'fusion', 'DOS-c';
+html,
+p {
+  font-family: "ZpixA", "fusion", "DOS-c";
   font-size: 1rem;
   line-height: 1.6em; /* 1.6 中文 */
   cursor: default !important;
@@ -103,7 +104,7 @@ ul li {
 }
 
 ul > li::before {
-  content: '• '; 
+  content: "• ";
   font-weight: bold;
 }
 
@@ -119,9 +120,9 @@ img {
 /* ======================== 代码框样式 ======================== */
 code {
   background-color: #f1f1f1;
-  padding: .1rem .2rem;
-  margin: 0 .2rem;
-  font-family: 'DOS','DOS-c','ZpixA';
+  padding: 0.1rem 0.2rem;
+  margin: 0 0.2rem;
+  font-family: "DOS", "DOS-c", "ZpixA";
 }
 
 a code {
@@ -139,11 +140,11 @@ pre code {
   background-color: transparent;
   font-size: 100%;
   padding: 0;
-  font-family: 'DOS','DOS-c','ZpixA';
+  font-family: "DOS", "DOS-c", "ZpixA";
 }
 
-.highlight ::selection { 
-  background: pink; 
+.highlight ::selection {
+  background: pink;
   color: inherit;
 }
 
@@ -172,11 +173,17 @@ header {
 }
 
 /* 标题字体大小 */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: 1.2rem;
 }
 
-.title, .page-title {
+.title,
+.page-title {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
@@ -192,15 +199,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ======================== 标题前缀样式 ======================== */
-h1::before { color: var(--maincolor); content: '# '; }
-h2::before { color: var(--maincolor); content: '✚ '; }
-h3::before { color: var(--maincolor); content: '□ '; }
-h4::before { color: var(--maincolor); content: '◇ '; }
-h5::before { color: var(--maincolor); content: '■ '; }
-h6::before { color: var(--maincolor); content: '◆ '; }
+h1::before {
+  color: var(--maincolor);
+  content: "# ";
+}
+h2::before {
+  color: var(--maincolor);
+  content: "✚ ";
+}
+h3::before {
+  color: var(--maincolor);
+  content: "□ ";
+}
+h4::before {
+  color: var(--maincolor);
+  content: "◇ ";
+}
+h5::before {
+  color: var(--maincolor);
+  content: "■ ";
+}
+h6::before {
+  color: var(--maincolor);
+  content: "◆ ";
+}
 
 /* ======================== 时间戳样式 ======================== */
-.meta, time {
+.meta,
+time {
   color: #999;
 }
 
@@ -225,7 +251,7 @@ footer {
 }
 
 /* ======================== 草稿标签样式 ======================== */
-.draft-label { 
+.draft-label {
   color: var(--bordercl);
   text-decoration: none;
   padding: 2px 4px;
@@ -241,7 +267,8 @@ table {
   overflow-x: auto;
 }
 
-table td, th {
+table td,
+th {
   padding: 6px 13px;
   border: 1px solid #dfe2e5;
 }
@@ -253,7 +280,7 @@ table th {
 /* ======================== 滚动条样式 ======================== */
 ::-webkit-scrollbar {
   width: 0px;
-  height: 0px
+  height: 0px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -262,16 +289,20 @@ table th {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 .box::-webkit-scrollbar {
-  display: none
+  display: none;
 }
 
 /* ======================== 脚注引用样式 ======================== */
-a[href^="#fn:"]:before { content: '<' }
-a[href^="#fn:"]:after { content: '>' }
+a[href^="#fn:"]:before {
+  content: "<";
+}
+a[href^="#fn:"]:after {
+  content: ">";
+}
 
 /* ======================== 分页导航样式 ======================== */
 .pagination {
@@ -329,14 +360,18 @@ a[href^="#fn:"]:after { content: '>' }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* ======================== 标注框样式 ======================== */
 .callout {
   border-left: 0.3rem solid crimson;
-  background-color: #FFF;
+  background-color: #fff;
   padding: 0.1rem 1rem;
 }
 
@@ -413,6 +448,6 @@ a[href^="#fn:"]:after { content: '>' }
 #progress-bar {
   transition: width 0.25s ease-out;
   height: 100%;
-  background: var(--hovercolor); 
+  background: var(--hovercolor);
   width: 0%;
 }

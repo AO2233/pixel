@@ -1,30 +1,30 @@
 @font-face {
-  font-family: 'ZpixA';
+  font-family: "ZpixA";
   font-style: normal;
   font-weight: 400;
-  src: local('Zpix');
-  src: url('../fonts/zpix_fusion.woff2'); /* https://github.com/SolidZORO/zpix-pixel-font 12px */
+  src: local("Zpix");
+  src: url("../fonts/zpix_fusion.woff2"); /* https://github.com/SolidZORO/zpix-pixel-font 12px 此处使用混合字体 */
 }
 
 @font-face {
-  font-family: 'fusion';
+  font-family: "fusion";
   font-style: normal;
   font-weight: 400;
-  src: local('fusion');
-  src: url('../fonts/fusion.woff2'); /* https://github.com/TakWolf/fusion-pixel-font 12px */
+  src: local("fusion");
+  src: url("../fonts/fusion.woff2"); /* https://github.com/TakWolf/fusion-pixel-font 12px */
 }
 
 /* code */
 @font-face {
-  font-family: 'DOS';
+  font-family: "DOS";
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/Fixedsys500c.woff'); /* Chrome */
+  src: url("../fonts/Fixedsys500c.woff"); /* Chrome */
 }
 
 @font-face {
-  font-family: 'DOS-c';
+  font-family: "DOS-c";
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/ipix.woff2'); /* Chrome */
+  src: url("../fonts/ipix.woff2"); /* Chrome */
 }
