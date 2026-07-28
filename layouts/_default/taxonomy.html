@@ -1,0 +1,15 @@
+{{ define "main" }}
+  {{ if isset .Data "Term" }}
+    <h2 class="page-title">{{ .Data.Term }}</h2>
+  {{ else }}
+    <h2 class="page-title">Posts</h2>
+  {{ end }}
+
+  <main class="list">
+    {{ $paginator := .Paginate .Pages }}
+    {{ range $paginator.Pages }}
+      {{ partial "post-list-entry.html" (dict "page" . "dateFormat" "2006.01.02") }}
+    {{ end }}
+    {{ partial "paginator.html" $paginator }}
+  </main>
+{{ end }}

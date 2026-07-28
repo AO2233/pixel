@@ -1,0 +1,8 @@
+# Operating system and editor metadata
+.DS_Store
+.vscode/
+
+# Hugo-generated files
+.hugo_build.lock
+public/
+resources/_gen/

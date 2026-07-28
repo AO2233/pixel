@@ -1,0 +1,13 @@
+{{- $id := .Get "id" | default (printf "pdf-%d" .Ordinal) -}}
+<div id="{{ $id }}"></div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("{{ $id }}");
+    if (container && typeof PDFObject !== "undefined") {
+      PDFObject.embed("{{ .Get "src" }}", `#${container.id}`, {
+        height: "70em",
+        fallbackLink: "<p>The browser does not support embedded <a href='[url]'>PDF</a> documents.</p>"
+      });
+    }
+  });
+</script>

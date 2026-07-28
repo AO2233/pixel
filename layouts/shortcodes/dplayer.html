@@ -1,0 +1,21 @@
+{{- $id := .Get "id" | default (printf "dplayer-%d" .Ordinal) -}}
+<div class="media-embed media-embed--wide">
+  <div id="{{ $id }}"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("{{ $id }}");
+      if (container && typeof DPlayer !== "undefined") {
+        new DPlayer({
+          container,
+          screenshot: true,
+          airplay: true,
+          chromecast: true,
+          preload: "auto",
+          video: {
+            url: "{{ .Get "url" }}"
+          }
+        });
+      }
+    });
+  </script>
+</div>

@@ -1,0 +1,4 @@
+{{ define "main" }}
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ partial "post-list.html" (dict "context" . "pages" $posts) }}
+{{ end }}

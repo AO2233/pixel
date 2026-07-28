@@ -1,0 +1,39 @@
+{{- if gt .TotalPages 1 }}
+<nav class="pagination" aria-label="Post list pagination">
+  <div class="page-item page-prev">
+    {{- if .HasPrev }}
+    <a href="{{ .Prev.URL }}" class="page-link" rel="prev" aria-label="Previous page">
+      <span class="page-link-arrow" aria-hidden="true">←</span>
+      <span class="page-link-label">PREV</span>
+    </a>
+    {{- else }}
+    <span class="page-link is-disabled" aria-disabled="true">
+      <span class="page-link-arrow" aria-hidden="true">←</span>
+      <span class="page-link-label">PREV</span>
+    </span>
+    {{- end }}
+  </div>
+
+  <p class="page-status">
+    <span>PAGE</span>
+    <strong>{{ printf "%02d" .PageNumber }}</strong>
+    <span aria-hidden="true">/</span>
+    <span class="sr-only">OF</span>
+    <span>{{ printf "%02d" .TotalPages }}</span>
+  </p>
+
+  <div class="page-item page-next">
+    {{- if .HasNext }}
+    <a href="{{ .Next.URL }}" class="page-link" rel="next" aria-label="Next page">
+      <span class="page-link-label">NEXT</span>
+      <span class="page-link-arrow" aria-hidden="true">→</span>
+    </a>
+    {{- else }}
+    <span class="page-link is-disabled" aria-disabled="true">
+      <span class="page-link-label">NEXT</span>
+      <span class="page-link-arrow" aria-hidden="true">→</span>
+    </span>
+    {{- end }}
+  </div>
+</nav>
+{{- end }}

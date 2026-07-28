@@ -1,0 +1,5 @@
+{{- $anchor := .Anchor -}}
+{{- if not $anchor -}}
+  {{- $anchor = .Text | plainify | anchorize -}}
+{{- end -}}
+<h{{ .Level }}{{ with $anchor }} id="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</h{{ .Level }}>

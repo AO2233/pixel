@@ -1,0 +1,50 @@
+:root {
+  --maincolor: #9bd6ac;
+  --hovercolor: #82c99a;
+  --darkbgcolor: #202124;
+  --pagebg: var(--darkbgcolor);
+  --surfacecolor: #292b2f;
+  --mutedcolor: #aaa7a0;
+  --linecolor: #55575d;
+  --textcolor: #efeee9;
+  --selection-text: #161719;
+  --mark-text: var(--darkbgcolor);
+  --mark-bg: #f7c948;
+  --code-text: var(--darkbgcolor);
+  --code-bg: #c5dacf;
+  --pre-bg: var(--darkbgcolor);
+  --panel-shadow: rgba(255, 255, 255, 0.08);
+  --blockquote-text: #eee;
+  --blockquote-bg: rgba(255, 255, 255, 0.04);
+  --draft-text: #1e1e24;
+  --draft-bg: var(--maincolor);
+  --draft-border: var(--maincolor);
+  --code-label-text: #111;
+  --code-label-bg: #e8e7e2;
+  --error-hover-text: var(--darkbgcolor);
+  --mask-bg: #fff;
+  --crt-overlay:
+    linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+  --crt-opacity: 0.22;
+  --crt-shadow: inset 0 0 58px rgba(0, 0, 0, 0.62);
+  --heading-shadow:
+    1px 0 2px rgba(80, 250, 123, 0.3),
+    -1px 0 2px rgba(0, 180, 216, 0.3);
+}
+
+.draft-label {
+  font-weight: 700;
+}
+
+.chroma {
+  background-color: #1c1c1c;
+}
+
+.ln {
+  color: lightblue;
+}
+
+.no-ai-logo embed[src$="no-ai-black.svg"] {
+  display: block;
+}

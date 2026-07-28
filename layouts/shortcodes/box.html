@@ -1,0 +1,6 @@
+<details class="collapsible">
+  <summary class="bar">{{ .Get "title" | default "Details" | markdownify }}</summary>
+  <div class="collapsible-content">
+    {{ .Inner | strings.TrimSpace | .Page.RenderString }}
+  </div>
+</details>

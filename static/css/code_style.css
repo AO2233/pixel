@@ -1,0 +1,150 @@
+/* 代码组件 */
+/*  ======================== 代码块  ======================== */
+.highlight {
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+.highlight pre code[class*="language-"] {
+-webkit-overflow-scrolling: touch;
+}
+
+.highlight pre code[class*="language-"]::before {
+background: black;
+color: white;
+
+border-radius: 0;
+font-size: 0.8em;
+letter-spacing: 0.025rem;
+padding: 0.1rem 0.5rem;
+position: absolute;
+right: 1rem;
+text-align: right;
+text-transform: uppercase;
+top: 0;
+}
+
+
+.highlight pre code[class*='language-log']::before {
+  content: 'log';
+}
+
+.highlight pre code[class*='language-code']::before {
+  content: 'code';
+}
+
+.highlight pre code[class*='language-C#']::before,
+.highlight pre code[class*='language-c#']::before {
+  content: 'C#';
+}
+
+.highlight pre code[class*='language-html']::before {
+  content: 'html';
+}
+
+.highlight pre code[class*='language-xml']::before {
+  content: 'xml';
+}
+
+
+
+.highlight pre code[class=language-javaScript]::before,
+.highlight pre code[class="language-js"]::before {
+  content: "js";
+}
+
+.highlight pre code[class*='language-yml']::before,
+.highlight pre code[class*='language-yaml']::before {
+  content: 'yaml';
+
+}
+
+.highlight pre code[class*='language-shell']::before,
+.highlight pre code[class*='language-zsh']::before,
+.highlight pre code[class*='language-bash']::before,
+.highlight pre code[class*='language-sh']::before {
+  content: 'shell';
+}
+
+.highlight pre code[class*='language-json']::before {
+  content: 'json';
+}
+
+.highlight pre code[class*='language-python']::before,
+.highlight pre code[class*='language-py']::before {
+  content: 'py';
+
+}
+
+.highlight pre code[class*='language-css']::before {
+  content: 'css';
+
+}
+
+.highlight pre code[class*='language-go']::before {
+  content: 'Go';
+}
+
+.highlight pre code[class*='language-cpp']::before,
+.highlight pre code[class*='language-c']::before,
+.highlight pre code[class*='language-c++']::before {
+  content: 'C++';
+}
+
+.highlight pre code[class*='language-java']::before {
+  content: 'Java';
+}
+
+.highlight pre code[class*='language-php']::before {
+  content: 'PHP';
+}
+
+.highlight pre code[class*='language-ruby']::before {
+  content: 'Ruby';
+}
+
+.highlight pre code[class*='language-rust']::before {
+  content: 'Rust';
+}
+
+.highlight pre code[class*='language-sql']::before {
+  content: 'SQL';
+}
+
+.highlight pre code[class*='language-nginx']::before {
+  content: 'Nginx';
+}
+
+.highlight pre code[class*='language-docker']::before {
+  content: 'Docker';
+}
+
+.highlight pre code[class*='language-diff']::before {
+  content: 'Diff';
+}
+
+.highlight pre code[class*='language-TEX']::before,
+.highlight pre code[class*='language-TeX']::before,
+.highlight pre code[class*='language-tex']::before,
+.highlight pre code[class*='language-latex']::before,
+.highlight pre code[class*='language-LaTeX']::before {
+  content: 'LaTeX';
+}
+
+.highlight pre code[class*='language-graphql']::before {
+  content: 'GraphQL';
+}
+
+.highlight pre code[class*='language-toml']::before {
+  content: 'Toml';
+}
+
+.highlight pre code[class*='language-markdown']::before,
+.highlight pre code[class*='language-md']::before {
+  content: 'Markdown';
+}
+
+.highlight pre code[class*='language-text']::before {
+  content: 'text';
+}
+
+/*  ======================== 代码块  ======================== */

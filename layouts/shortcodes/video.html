@@ -1,0 +1,10 @@
+{{- $width := .Get "width" | default "100%" -}}
+<figure class="media-figure media-figure--wide">
+  <video class="media-item" autoplay loop muted playsinline preload="auto" style="width: 100%; max-width: {{ $width }}">
+    <source src="{{ .Get "src" }}" type="{{ .Get "type" | default "video/mp4" }}">
+    Download the <a href="{{ .Get "src" }}">video</a>.
+  </video>
+  {{- with .Get "caption" }}
+  <figcaption class="caption">{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>

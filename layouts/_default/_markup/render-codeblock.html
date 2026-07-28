@@ -1,0 +1,12 @@
+{{- if eq .Type "mermaid" -}}
+  <div class="mermaid-scroll">
+    <div class="mermaid">{{ .Inner | safeHTML }}</div>
+  </div>
+{{- else if (or (eq .Type "note") (eq .Type "tip") (eq .Type "warning") (eq .Type "caution")) -}}
+  <div class="callout callout-{{ .Type }}">
+    <strong class="callout-label">{{ .Type }}</strong>
+    <div>{{ .Inner | markdownify }}</div>
+  </div>
+{{- else -}}
+  {{- transform.Highlight .Inner .Type .Options -}}
+{{- end -}}

@@ -1,0 +1,114 @@
+# 基本参数
+baseURL: https://ao2233.github.io/
+title: 帰宅部
+theme: pixel
+
+taxonomies: {} # remove tags, categories, https://gohugo.io/content-management/taxonomies/
+# taxonomies:
+#   tag: tags
+
+pagination:
+  pagerSize: 50
+
+# 自设置参数
+params:
+  favicon: "duck.ico"
+  subtitle: さらば、すべてのエヴァンゲリオン
+  social:
+    - name: GitHub
+      icon: github
+      url: https://github.com/AO2233
+    - name: GitLab
+      icon: gitlab
+      url: https://gitlab.com/AO2233
+    # - name: Kaggle
+    #   icon: link
+    #   url: https://www.kaggle.com/ao2233
+    # - name: Atcoder
+    #   icon: code
+    #   url: https://atcoder.jp/users/AO2233
+    - name: Steam
+      icon: hash
+      url: https://steamcommunity.com/id/u604b
+    - name: Twitter
+      icon: twitter
+      url: https://x.com/u604b
+  
+    - name: Mail
+      icon: mail
+      url: mailto:ao.debian@gmail.com
+
+  # extralink:
+  #   - name: GitHub
+  #     url: https://github.com/AO2233
+
+menu:
+  main:
+    - name: Log
+      url: /time/
+      weight: 1
+
+    - name: About
+      url: /about
+      weight: 2
+
+defaultContentLanguage: en
+#defaultContentLanguageInSubdir: false
+
+# markup & code
+markup:
+  defaultMarkdownHandler: goldmark
+  goldmark:
+    extensions:
+      definitionList: true
+      footnote: true
+      linkify: true
+      strikethrough: true
+      table: true
+      taskList: true
+      passthrough:
+        delimiters:
+          block:
+          - - $$
+            - $$
+          inline:
+          - - $
+            - $
+        enable: true
+
+    parser:
+      autoHeadingID: true
+      autoHeadingIDType: github
+      attribute:
+        block: false
+        title: true
+    renderer:
+    #   hardWraps: false # markdown里的换行符是否被解释为换行 
+        unsafe: true # 是否允许渲染html标签
+  
+  highlight:
+    anchorLineNos: false
+    codeFences: true
+    guessSyntax: true
+    lineNoStart: 1
+    lineNos: true
+    lineNumbersInTable: false
+    noClasses: false # 自行调整code样式
+    style: monokai
+    tabWidth: 4
+  tableOfContents:
+    endLevel: 3
+    ordered: false
+    startLevel: 2
+
+outputs:
+  home:
+  - html
+  - rss
+  section:
+  - html
+  - rss
+  taxonomy:
+  - html
+  term:
+  - html

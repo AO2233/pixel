@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Error 404</title>
+		<link href="{{ "css/fonts.css" | relURL }}" rel="stylesheet">
+		<link href="{{ "css/main.css" | relURL }}" rel="stylesheet">
+		<link href="{{ "css/dark.css" | relURL }}" rel="stylesheet" media="(prefers-color-scheme: dark)">
+		<script defer src="{{ "js/theme.js" | relURL }}"></script>
+	</head>
+	<body>
+		<div class="crt-overlay"></div>
+		<main class="content error-page">
+			<p class="error-label">LOST CHAPTER</p>
+			<h1 class="error-code">404</h1>
+			<p>This page slipped out of the story.</p>
+			<a class="error-return" href="{{ .Site.BaseURL }}">← BACK TO INDEX</a>
+			<img src="{{ "404/no-data.png" | relURL }}" alt="Page not found"/>
+		</main>
+	</body>
+</html>

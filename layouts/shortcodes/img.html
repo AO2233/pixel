@@ -1,0 +1,21 @@
+{{ $srcs := split (.Get "src") "," }}
+{{ $width := .Get "width" | default "700px" }}
+{{ $caption := .Get "caption" }}
+{{ $alt := .Get "alt" | default ($caption | markdownify | plainify) }}
+{{ $layout := lower (.Get "layout" | default "wide") }}
+{{ if not (in (slice "text" "wide" "full") $layout) }}
+  {{ errorf "img shortcode: layout must be text, wide, or full (got %q)" $layout }}
+{{ end }}
+
+<figure class="media-figure media-figure--{{ $layout }}">
+  <div class="masonry-gallery">
+{{- range apply $srcs "strings.TrimSpace" "." }}
+<div class="masonry-gallery-item" style="max-width: {{ $width }}">
+<img src="{{ . }}" alt="{{ $alt }}" class="zoom-image">
+</div>
+{{- end }}
+  </div>
+  {{ with $caption }}
+  <figcaption class="caption">{{ . | markdownify }}</figcaption>
+  {{ end }}
+</figure>

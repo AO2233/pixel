@@ -1,0 +1,144 @@
+{{- /* Last modified: 2023-06-30T12:24:14-07:00 */}}
+
+{{- /*
+Copyright 2023 Veriphor LLC
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not
+use this file except in compliance with the License. You may obtain a copy of
+the License at
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations under
+the License.
+*/}}
+
+{{- /*
+Renders a Spotify Widget.
+
+Spotify Widgets provide an embeddable view of an album, artist, episode, playlist, podcast, or track for use within your Hugo project.
+
+References:
+
+  - https://developer.spotify.com/documentation/widgets/
+  - https://developer.spotify.com/documentation/widgets/terms/
+  - https://www.spotify.com/us/legal/privacy-policy/
+  - https://support.spotify.com/us/article/gdpr-article-15-information/
+
+@context {string} Inner The content between the opening and closing shortcode tags.
+@context {string} InnerDeindent The content between the opening and closing shortcode tags with indentation removed.
+@context {string} Name The file name of the shortcode template, excluding the extension.
+@context {int} Ordinal The zero-based ordinal of the shortcode on the page, or within its parent shortcode.
+@context {page} Page A reference to the page containing the shortcode.
+@context {map} Params The parameters specified in the opening shortcode tag.
+@context {hugolib.ShortcodeWithPage} Parent The context of the parent shortcode.
+@context {text.Position} Position The position of the shortcode within the page content.
+
+@method {any} Get Returns the parameter value for the given key (for named parameters) or position (for positional parameters).
+@mathod {bool} IsNamedParams Returns true if the shortcode is called with named instead of positional parameters.
+@method {maps.Scratch) Scratch Returns a writable Scratch to store and manipulate data.
+
+@param {string} Params.url The URL of the artist, playlist, album, track, podcast, or episode.
+@param {string} [Params.id] The id attribute of the iframe element.
+@param {string} [Params.class] A class name to add to the class attribute of the iframe element.
+@param {string} [Params.width=100%] The width attribute of the iframe element.
+@param {string} [Params.height=232px or 380px] The height attribute of the iframe element. For shows and episodes, the default value is 232px. For other widget types, the default value is 380px.
+@param {string} [Params.loading=lazy] The loading attribute of the iframe element.
+@param {bool}   [Params.useTheme=true] Render using the Spotify theme? If true, the background color is automatically determined by content. If false, the background color is dark gray (#282828).
+
+@returns {text.HTML} A Spotify Widget.
+
+@example {{< spotify url=https://open.spotify.com/playlist/37i9dQZF1DZ06evO3NpPH1 >}}
+*/}}
+
+{{- /* Verify minimum required version. */}}
+{{- $minHugoVersion := "0.114.0" }}
+{{- if lt hugo.Version $minHugoVersion }}
+  {{- errorf "The %s shortcode requires Hugo v%s or later." .Name $minHugoVersion }}
+{{- end }}
+
+{{- /* Get context. */}}
+{{- $name := .Name }}
+{{- $ordinal := .Ordinal }}
+{{- $position := .Position }}
+
+{{- /* Set default height for each widget type. */}}
+{{- $defaultHeight := dict
+  "album" "380px"
+  "artist" "380px"
+  "episode" "232px"
+  "playlist" "380px"
+  "show" "152px"
+  "track" "152px"
+ }}
+
+{{- /* Parse url or track or positional parameter. */}}
+{{- $rawUrl := .Get "url" | default (.Get "track") | default (.Get 0) -}}
+{{- $url := "" -}}
+{{- if not $rawUrl -}}
+  {{- errorf "The %q shortcode requires a url or track parameter. See %s" $name $position -}}
+{{- else if strings.HasPrefix $rawUrl "http" -}}
+  {{- $url = $rawUrl -}}
+{{- else -}}
+  {{- $url = printf "https://open.spotify.com/track/%s" $rawUrl -}}
+{{- end -}}
+{{- $path := (urls.Parse $url).Path -}}
+{{- $parts := split $path "/" -}}
+{{- $type := "track" -}}
+{{- if ge (len $parts) 2 -}}
+  {{- $type = index $parts 1 -}}
+{{- end -}}
+
+{{- /* Set defaults. */}}
+{{- $class := printf "spotify spotify-%s" $type }}
+{{- $id := printf "h-sc-%s-%d" $name $ordinal }}
+{{- $width := "100%" }}
+{{- $height := index $defaultHeight $type }}
+{{- $loading := "lazy" }}
+{{- $useTheme := 1 }}
+
+{{- /* Get parameters. */}}
+{{- with .Get "class" }}
+  {{- $class = printf "%s %s" $class . }}
+{{- end }}
+{{- with .Get "id" }}
+  {{- $id = . }}
+{{- end }}
+{{- with .Get "width" }}
+  {{- $width = . }}
+{{- end }}
+{{- with .Get "height" }}
+  {{- $height = . }}
+{{- end }}
+{{- with .Get "loading" }}
+  {{- $loading = . }}
+{{- end }}
+{{- if isset .Params "useTheme" }}
+  {{- if in (slice false "false") (.Get "useTheme") }}
+    {{- $useTheme = 0 }}
+  {{- end }}
+{{- end }}
+
+{{- /* Define attributes map. */}}
+{{- $attrs := dict
+  "class" $class
+  "id" $id
+  "style" (printf "width: %s; height: %s; border: none;" $width $height)
+  "loading" $loading
+  "src" (printf "https://open.spotify.com/embed%s?theme=%d" $path $useTheme)
+  "allow" "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+  "allowfullscreen" "allowfullscreen"
+}}
+
+{{- /* Render. */}}
+<iframe
+{{- range $k, $v := $attrs }}
+  {{- if $v }}
+    {{- printf " %s=%q" $k (string $v) | safeHTMLAttr }}
+  {{- end }}
+{{- end -}}
+></iframe>
+{{- /**/ -}}

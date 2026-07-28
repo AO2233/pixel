@@ -1,0 +1,15 @@
+{{- $context := .context -}}
+{{- with $context.Site.Params.subtitle }}
+  <p class="site-description">{{ . | markdownify }}</p>
+{{- end }}
+
+{{- $paginator := $context.Paginate .pages }}
+<main class="list">
+  {{- range $paginator.Pages.GroupByDate "2006" }}
+    <h2 class="year-heading">{{ .Key }}</h2>
+    {{- range .Pages }}
+      {{ partial "post-list-entry.html" (dict "page" . "dateFormat" "01.02") }}
+    {{- end }}
+  {{- end }}
+  {{ partial "paginator.html" $paginator }}
+</main>

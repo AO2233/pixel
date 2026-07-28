@@ -1,0 +1,43 @@
+{{- $id := .Get "id" | default (printf "aplayer-%d" .Ordinal) -}}
+{{- $fixed := or (eq (.Get "fix") "true") (eq (.Get "fix") true) -}}
+{{- $auto := or (eq (.Get "auto") "true") (eq (.Get "auto") true) -}}
+{{- $url := (.Get "url") | relURL -}}
+{{- $cover := cond (ne (.Get "cover") "") ((.Get "cover") | relURL) "" -}}
+{{- $lrc := .Get "lrc" | default "" -}}
+
+<div id="{{ $id }}"></div>
+<script>
+(function() {
+    function initAPlayer() {
+        var el = document.getElementById('{{ $id }}');
+        if (!el) return;
+        if (typeof APlayer === 'undefined') {
+            setTimeout(initAPlayer, 50);
+            return;
+        }
+        // Keep fixed players outside article/layout containers. Mobile Safari can
+        // otherwise include their fixed descendants in the document's scrollable
+        // overflow and create a large blank area below the page.
+        if ({{ $fixed }} && el.parentNode !== document.body) {
+            document.body.appendChild(el);
+        }
+        new APlayer({
+            container: el,
+            fixed: {{ $fixed }},
+            autoplay: {{ $auto }},
+            audio: [{
+                name: {{- .Get "name" | default "Audio" | jsonify | safeJS -}},
+                artist: {{- (.Get "artist" | default "") | jsonify | safeJS -}},
+                url: {{- $url | jsonify | safeJS -}},
+                cover: {{- $cover | jsonify | safeJS -}},
+                lrc: {{- $lrc | jsonify | safeJS -}}
+            }]
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAPlayer);
+    } else {
+        initAPlayer();
+    }
+})();
+</script>

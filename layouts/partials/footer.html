@@ -1,0 +1,14 @@
+<footer class="footer">
+  <hr>
+  <div class="footer-inner">
+    <div class="footer-social">
+      {{- range .Site.Params.Social }}
+      <a class="soc" href="{{ .url }}" title="{{ .name }}"><i data-feather="{{ .icon }}"></i></a>
+      {{- end }}
+    </div>
+    <div class="no-ai-logo">
+      <embed src="{{ "svg/no-ai-white.svg" | relURL }}" type="image/svg+xml" width="128" height="37">
+      <embed src="{{ "svg/no-ai-black.svg" | relURL }}" type="image/svg+xml" width="128" height="37">
+    </div>
+  </div>
+</footer>

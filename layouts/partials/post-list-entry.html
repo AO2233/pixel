@@ -1,0 +1,9 @@
+{{- $page := .page -}}
+{{- $dateFormat := .dateFormat | default "01.02" -}}
+<section class="post-list-entry">
+  <a class="list-item" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+  <span class="meta">
+    <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format $dateFormat }}</time>
+    {{- if $page.Draft }} <span class="draft-label">DRAFT</span>{{ end }}
+  </span>
+</section>

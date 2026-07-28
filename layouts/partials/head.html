@@ -1,0 +1,65 @@
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+	<meta name=viewport content="width=device-width,initial-scale=1">
+	{{ partial "seo.html" . }}
+
+	{{ with .OutputFormats.Get "rss" }}
+  		{{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+	{{ end }}
+
+	<title>{{ .Site.Title }}</title>
+
+	{{- $rawContent := .RawContent | default "" -}}
+	{{- $hasAPlayer := .HasShortcode "aplayer" -}}
+	{{- $hasDPlayer := .HasShortcode "dplayer" -}}
+	{{- $hasPDF := .HasShortcode "pdf" -}}
+	{{- $hasMermaid := or (.HasShortcode "mermaid") (strings.Contains $rawContent "```mermaid") -}}
+	{{- $hasMath := gt (len (findRE `(\$\$|\\\(|\\\[)` $rawContent)) 0 -}}
+	{{- $hasZoom := or (.HasShortcode "img") (strings.Contains $rawContent "![") (strings.Contains $rawContent "<img") -}}
+	{{- $hasCode := or (strings.Contains $rawContent "```") (strings.Contains $rawContent "~~~") -}}
+
+	<link rel="icon" href="{{ .Site.Params.favicon | relURL }}">
+	{{- if $hasCode }}
+	<link rel="stylesheet" href="{{ "css/code_style.css" | relURL }}">
+	<link rel="stylesheet" href="{{ "css/code_light.css" | relURL }}">
+	{{- end }}
+	<link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}">
+	{{- if $hasAPlayer }}
+	<link rel="stylesheet" href="{{ "js/aplayer/APlayer.min.css" | relURL }}">
+	{{- end }}
+	{{- if $hasZoom }}
+	<link rel="stylesheet" href="{{ "js/zoom/style.min.css" | relURL }}">
+	{{- end }}
+	<link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+	<link rel="stylesheet" href="{{ "css/dark.css" | relURL }}" media="(prefers-color-scheme: dark)">
+	{{- if $hasCode }}
+	<link rel="stylesheet" href="{{ "css/code_dark.css" | relURL }}" media="(prefers-color-scheme: dark)">
+	{{- end }}
+	{{- if $hasMath }}
+	<link rel="stylesheet" href="{{ "js/katex/katex.min.css" | relURL }}">
+	{{- end }}
+
+	{{- if $hasAPlayer }}
+	<script defer src="{{ "js/aplayer/APlayer.min.js" | relURL }}"></script>
+	{{- end }}
+	{{- if $hasDPlayer }}
+	<script defer src="{{ "js/dplayer/DPlayer.min.js" | relURL }}"></script>
+	{{- end }}
+	{{- if $hasZoom }}
+	<script defer src="{{ "js/zoom/medium-zoom.min.js" | relURL }}"></script>
+	{{- end }}
+	{{- if $hasPDF }}
+	<script defer src="{{ "js/pdfobject.min.js" | relURL }}"></script>
+	{{- end }}
+	<script defer src="{{ "js/feather.min.js" | relURL }}"></script>
+	{{- if $hasMermaid }}
+	<script defer src="{{ "js/mermaid.min.js" | relURL }}"></script>
+	{{- end }}
+	{{- if $hasMath }}
+	<script defer src="{{ "js/katex/katex.min.js" | relURL }}"></script>
+	<script defer src="{{ "js/katex/contrib/auto-render.min.js" | relURL }}"></script>
+	{{- end }}
+	<script defer src="{{ "js/theme.js" | relURL }}"></script>
+
+</head>

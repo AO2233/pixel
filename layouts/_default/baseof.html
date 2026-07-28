@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  {{- partial "head.html" . }}
+  <body>
+    <div class="crt-overlay"></div>
+    <div class="content">
+      {{- partial "header.html" . }}
+      {{ block "main" . }}{{ end }}
+      {{- partial "footer.html" . }}
+    </div>
+  </body>
+</html>
