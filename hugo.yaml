@@ -14,6 +14,7 @@ pagination:
 params:
   favicon: "duck.ico"
   subtitle: さらば、すべてのエヴァンゲリオン
+  # Bundled icon catalog: assets/icons/CATALOG.md
   social:
     - name: GitHub
       icon: github
@@ -28,14 +29,14 @@ params:
     #   icon: code
     #   url: https://atcoder.jp/users/AO2233
     - name: Steam
-      icon: hash
+      icon: steam
       url: https://steamcommunity.com/id/u604b
-    - name: Twitter
-      icon: twitter
+    - name: X
+      icon: x
       url: https://x.com/u604b
   
-    - name: Mail
-      icon: mail
+    - name: Gmail
+      icon: gmail
       url: mailto:ao.debian@gmail.com
 
   # extralink:

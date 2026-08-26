@@ -8,10 +8,11 @@ Pixel 使用了以下开源组件，感谢这些项目的作者与贡献者。
 | --- | ---: | --- | --- | --- |
 | APlayer | 1.10.1 | Audio playback | MIT | [DIYgod/APlayer](https://github.com/DIYgod/APlayer) |
 | DPlayer | 1.27.1 | Video playback | MIT | [DIYgod/DPlayer](https://github.com/DIYgod/DPlayer) |
-| Feather Icons | 4.29.2 | Interface icons | MIT | [feathericons/feather](https://github.com/feathericons/feather) |
 | KaTeX | 0.16.21 | Math rendering | MIT | [KaTeX/KaTeX](https://github.com/KaTeX/KaTeX) |
 | Mermaid | 8.13.6 | Diagram rendering | MIT | [mermaid-js/mermaid](https://github.com/mermaid-js/mermaid) |
 | PDFObject | 2.2.7 | PDF embedding | MIT | [pipwerks/PDFObject](https://github.com/pipwerks/PDFObject) |
+| Simple Icons | 16.28.0 | Brand icons | CC0 1.0; individual trademarks remain with their owners | [simple-icons/simple-icons](https://github.com/simple-icons/simple-icons) |
+| Nintendo Switch logo | — | Nintendo brand icon | Public domain (simple geometry); trademark rights remain with Nintendo | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nintendo_Switch_Logo_(without_text).svg) |
 | medium-zoom | 1.1.0 | Image zoom | MIT | [francoischalifour/medium-zoom](https://github.com/francoischalifour/medium-zoom) |
 
 The Spotify shortcode template contains code by Veriphor LLC under the Apache License 2.0; its original notice is retained in `layouts/shortcodes/spotify.html`.

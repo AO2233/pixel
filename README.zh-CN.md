@@ -48,6 +48,13 @@ theme: pixel
 
 仓库内的 [`hugo.yaml`](hugo.yaml) 可以直接作为配置参考，其中包含 Goldmark、代码高亮、目录、菜单和主题参数。
 
+### 社交图标
+
+Footer 图标会在构建时从 `assets/icons/social/` 内联。请从内置的
+[图标目录](assets/icons/CATALOG.md)中选择文件名，填入 `params.social` 的
+`icon` 即可启用。图标在浅色和暗色模式下都会继承页脚颜色。需要扩展时，
+只需将 SVG 放入同一目录，不必增加浏览器端 JavaScript。
+
 ## 许可与致谢
 
 Pixel 的原创主题代码采用 [MIT License](LICENSE)。`static/fonts/` 中的主题字体不属于该许可证的授权范围，本仓库也不为这些字体授予公开许可。发布或再分发主题前，请先阅读[字体声明](FONT_NOTICE.md)。

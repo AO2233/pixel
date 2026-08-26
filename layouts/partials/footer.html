@@ -3,7 +3,9 @@
   <div class="footer-inner">
     <div class="footer-social">
       {{- range .Site.Params.Social }}
-      <a class="soc" href="{{ .url }}" title="{{ .name }}"><i data-feather="{{ .icon }}"></i></a>
+      <a class="soc" href="{{ .url }}" title="{{ .name }}" aria-label="{{ .name }}">
+        {{- partial "social-icon.html" .icon -}}
+      </a>
       {{- end }}
     </div>
     <div class="no-ai-logo">

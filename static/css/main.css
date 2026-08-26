@@ -6,6 +6,7 @@
   --pagebg: #fbfaf6;
   --surfacecolor: #f3f0e9;
   --mutedcolor: #77736d;
+  --social-icon-color: #67635d;
   --linecolor: #c9c2b8;
   --textcolor: #2f3038;
   --selection-text: #fff;
@@ -1155,17 +1156,22 @@ footer > hr {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
+  color: var(--social-icon-color);
 }
 
 /* 社交媒体图标 */
 .soc {
-  font-size: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
 }
 
 .soc svg {
-  max-height: 20px;
-  width: auto;
+  display: block;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 .soc:hover {

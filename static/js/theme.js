@@ -2,7 +2,6 @@ initMermaid();
 
 document.addEventListener("DOMContentLoaded", () => {
   initAchievementSystem();
-  initIcons();
   initImageZoom();
   initMath();
   initTableOfContents();
@@ -163,12 +162,6 @@ function showAchievement(achievement) {
       }
     }, 280);
   }, 2400);
-}
-
-function initIcons() {
-  if (typeof feather !== "undefined") {
-    feather.replace();
-  }
 }
 
 function initImageZoom() {

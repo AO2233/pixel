@@ -1,0 +1,9 @@
+{{- $path := printf "icons/social/%s.svg" . -}}
+{{- with resources.Get $path -}}
+  {{- $svg := .Content -}}
+  {{- $svg = replaceRE `<title>[^<]*</title>` "" $svg -}}
+  {{- $svg = replaceRE `^<svg role="img"` `<svg class="social-icon" aria-hidden="true" focusable="false"` $svg -}}
+  {{- $svg | safeHTML -}}
+{{- else -}}
+  {{- errorf "social icon %q was not found at assets/%s" . $path -}}
+{{- end -}}

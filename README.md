@@ -48,6 +48,14 @@ theme: pixel
 
 The included [`hugo.yaml`](hugo.yaml) is a working reference for Goldmark, code highlighting, the table of contents, menus, and theme parameters.
 
+### Social icons
+
+Footer icons are inlined from `assets/icons/social/` at build time. Choose a
+filename from the bundled [icon catalog](assets/icons/CATALOG.md) and use it as
+the `icon` value in `params.social`. Icons inherit the footer color in both
+light and dark mode. Add another SVG to the same directory to extend the set
+without adding client-side JavaScript.
+
 ## License and credits
 
 Pixel's original theme code is released under the [MIT License](LICENSE). The theme fonts in `static/fonts/` are not covered by that license, and this repository grants no public license for them. Read the [font notice](FONT_NOTICE.md) before publishing or redistributing the theme.
