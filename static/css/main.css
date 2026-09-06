@@ -356,6 +356,24 @@ img {
   margin: 0 auto;
 }
 
+.pixel-reveal-pending {
+  opacity: 0;
+}
+
+.pixel-reveal-frame {
+  position: relative;
+}
+
+.pixel-reveal-canvas {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  box-sizing: border-box;
+  border: 2px solid var(--linecolor);
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
 figure.media-figure {
   width: 100%;
   margin: var(--space-block) auto;
@@ -662,43 +680,7 @@ h6 {
   margin-top: 0.5rem;
 }
 
-/* 页面题名使用简短的视觉小说式 eyebrow。 */
-.post-header h1.title::before,
-.page-title::before {
-  display: block;
-  margin-bottom: 0.08rem;
-  color: var(--maincolor);
-  font-family: var(--font-ui);
-  font-size: 0.64rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  line-height: 1;
-  text-shadow: none;
-}
-
-.post-header h1.title::before {
-  content: "ENTRY";
-}
-
-.log-page .post-header h1.title::before {
-  content: "LOG";
-}
-
-.page-title::before {
-  content: "INDEX";
-}
-
-.post-header h1.title::after,
-.page-title::after {
-  content: "";
-  display: block;
-  width: 2.4rem;
-  height: 1px;
-  margin-top: 0.3rem;
-  background: var(--maincolor);
-}
-
-/* 年份使用独立的 LOG 铭牌。 */
+/* 首页年份只用主题色区分，不添加额外文字标签。 */
 .year-heading {
   display: flex;
   align-items: center;
@@ -706,16 +688,12 @@ h6 {
 }
 
 .year-heading::before {
-  content: "LOG";
+  content: "";
   flex: none;
-  padding: 0.09rem 0.36rem 0.07rem;
-  border: 1px solid var(--maincolor);
+  width: 0.35rem;
+  height: 0.35rem;
+  background: var(--maincolor);
   color: var(--maincolor);
-  background: color-mix(in srgb, var(--maincolor) 7%, transparent);
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  line-height: 1;
 }
 
 /* 展示编号按标题层级重置；页面内链接仍使用 Hugo 生成的独立标题锚点。 */
@@ -723,8 +701,6 @@ article > h1 {
   counter-increment: vn-chapter;
   counter-reset: vn-scene;
   padding-top: 0.64rem;
-  padding-bottom: 0.24rem;
-  border-bottom: 1px solid var(--linecolor);
 }
 
 article > h2 {
@@ -749,11 +725,11 @@ article > h3::before {
 }
 
 article > h1::before {
-  content: "CH." counter(vn-chapter, decimal-leading-zero);
+  content: counter(vn-chapter, decimal-leading-zero);
 }
 
 article > h2::before {
-  content: "SCENE." counter(vn-scene, decimal-leading-zero);
+  content: counter(vn-chapter, decimal-leading-zero) "." counter(vn-scene, decimal-leading-zero);
 }
 
 article > h3 {
@@ -762,7 +738,7 @@ article > h3 {
 }
 
 article > h3::before {
-  content: counter(vn-chapter) "." counter(vn-scene) "." counter(vn-subscene);
+  content: counter(vn-chapter, decimal-leading-zero) "." counter(vn-scene, decimal-leading-zero) "." counter(vn-subscene, decimal-leading-zero);
 }
 
 article > h4 {
@@ -942,7 +918,7 @@ ul.post-toc-list > li::before {
 }
 
 .post-toc-level-1 > a::before {
-  content: "CH." counter(toc-chapter, decimal-leading-zero);
+  content: counter(toc-chapter, decimal-leading-zero);
 }
 
 .post-toc-level-2 > a::before {
@@ -950,7 +926,7 @@ ul.post-toc-list > li::before {
 }
 
 .post-toc-level-3 > a::before {
-  content: counter(toc-chapter) "." counter(toc-scene) "." counter(toc-subscene);
+  content: counter(toc-chapter, decimal-leading-zero) "." counter(toc-scene, decimal-leading-zero) "." counter(toc-subscene, decimal-leading-zero);
 }
 
 .post-toc a::before {
@@ -1257,7 +1233,22 @@ a[href^="#fnref:"] {
 }
 
 .footnotes ol {
+  list-style: none;
+  counter-reset: footnote;
   padding-inline-start: 2.2em;
+}
+
+.footnotes li {
+  position: relative;
+  counter-increment: footnote;
+}
+
+.footnotes li::before {
+  content: "<" counter(footnote) ">";
+  position: absolute;
+  inset-inline-start: -2.2em;
+  color: var(--maincolor);
+  font-family: var(--font-ui);
 }
 
 .footnotes li:target {
