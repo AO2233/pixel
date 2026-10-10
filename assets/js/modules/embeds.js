@@ -52,7 +52,9 @@ function initPDFs() {
   document.querySelectorAll("[data-pdf]").forEach((element) => {
     const { src } = readConfig(element, "data-pdf");
     PDFObject.embed(src, element, {
-      height: "70em",
+      height: "100%",
+      // Fit the page to the viewer's width instead of the whole page.
+      pdfOpenParams: { view: "FitH" },
       fallbackLink: "<p>The browser does not support embedded <a href='[url]'>PDF</a> documents.</p>",
     });
   });

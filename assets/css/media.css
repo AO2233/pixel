@@ -222,3 +222,24 @@ iframe.spotify {
   color-scheme: light;
   border-radius: 12px;
 }
+
+/* PDF：比正文栏宽（最宽 62rem），向两侧对称伸出；高度按 A4 竖版比例，
+ * 再限制在一屏以内。 */
+article > .pdf-embed {
+  position: relative;
+  left: 50%;
+  width: min(62rem, calc(100vw - 2rem));
+  height: min(calc(min(62rem, 100vw - 2rem) * 1.414), 90vh);
+  margin-block: var(--space-block);
+  transform: translateX(-50%);
+  border: 2px solid var(--window-edge);
+  box-shadow: var(--lift) var(--lift) 0 var(--frame-shadow);
+}
+
+.pdf-embed iframe,
+.pdf-embed embed {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
