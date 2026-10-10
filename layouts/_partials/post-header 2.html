@@ -1,8 +1,0 @@
-{{- /* Context: dict "page" "label" "date" */ -}}
-<header class="post-header">
-  <div class="meta">
-    <span class="post-date">{{ .label }} <time datetime="{{ .date.Format "2006-01-02" }}">{{ .date.Format "2006.01.02" }}</time></span>
-    {{- if .page.Draft }}<span class="draft-label">DRAFT</span>{{ end }}
-  </div>
-  <h1 class="title">{{ .page.Title }}</h1>
-</header>
