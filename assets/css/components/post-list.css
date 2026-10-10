@@ -110,7 +110,7 @@
 .post-list-entry {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, max-content) minmax(1.5rem, 1fr) auto;
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr) auto;
   align-items: baseline;
   gap: 0.6rem;
   padding: 0.3rem 0.35rem;
@@ -162,8 +162,13 @@
 
 @media (max-width: 480px) {
   .post-list-entry {
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 0.4rem;
     padding-inline: 0;
+  }
+
+  .entry-leader {
+    display: none;
   }
 
   .entry-date {

@@ -9,7 +9,7 @@
   }
 
   .post-list-entry:hover .entry-arrow,
-  :is(.keycap, .pagination a.page-link, .page-top):active {
+  :is(.keycap, .pagination a.page-link):active {
     transform: none !important;
   }
 

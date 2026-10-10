@@ -189,20 +189,3 @@ html.spine-hidden .site-spine {
   height: auto;
   margin: 0;
 }
-
-/* ======================== 回到顶部（键帽） ======================== */
-.page-top {
-  position: fixed;
-  right: 1rem;
-  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
-  z-index: 50;
-  padding: 0.3rem 0.5rem;
-  font-size: var(--fs-2xs);
-  line-height: 1.2;
-  letter-spacing: 0.08em;
-  text-align: center;
-}
-
-.page-top[hidden] {
-  display: none;
-}

@@ -47,7 +47,6 @@ table th {
 .keycap,
 article kbd,
 .pagination .page-link,
-.page-top,
 .collapsible .bar::after {
   border: 1px solid var(--key-edge);
   color: var(--key-legend);
@@ -62,19 +61,18 @@ article kbd,
     color var(--motion-fast) ease;
 }
 
-/* 主键（Esc 红）：回到顶部、返回目录、404 返回。 */
-.keycap--accent,
-.page-top {
+/* 主键（Esc 红）：返回目录、404 返回。 */
+.keycap--accent {
   --key-face: var(--accent);
   --key-side: var(--accent-strong);
   --key-legend: var(--on-accent);
 }
 
-:is(.keycap, .pagination a.page-link, .page-top):not(.keycap--accent, .page-top):hover {
+:is(.keycap, .pagination a.page-link):not(.keycap--accent):hover {
   color: var(--accent);
 }
 
-:is(.keycap, .pagination a.page-link, .page-top):active {
+:is(.keycap, .pagination a.page-link):active {
   box-shadow:
     inset 0 -1px 0 var(--key-side),
     0 0 0 var(--key-edge);
