@@ -160,7 +160,7 @@ article > .media-figure .media-item {
 }
 
 .media-figure .caption a {
-  background-size: 100% 1px;
+  --link-underline: 1px;
 }
 
 /* Zoomed media always sits above fixed page furniture such as the TOC. */
@@ -213,4 +213,12 @@ article :where(iframe, video, audio, embed, object, svg) {
 
 article iframe {
   border: 0;
+}
+
+/* Spotify：页面是 color-scheme: dark、iframe 内是浅色方案时，Chrome 会在 iframe
+ * 后面垫一层不透明白底，圆角外露出白边。让 iframe 用浅色方案保持透明，
+ * 并按 Spotify 的 12px 圆角裁切。 */
+iframe.spotify {
+  color-scheme: light;
+  border-radius: 12px;
 }

@@ -63,11 +63,16 @@ hr {
 }
 
 /* ======================== 正文文字标记 ======================== */
+/* 两层背景：上层荧光笔（默认高度 0）、下层固定下划线。
+ * 悬停只改荧光笔的高度，颜色不切换，进出动画都是连续的。 */
 article a {
-  background-image: linear-gradient(var(--accent), var(--accent));
+  --link-underline: 2px;
+  background-image:
+    linear-gradient(var(--marker-strong), var(--marker-strong)),
+    linear-gradient(var(--accent), var(--accent));
   background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 100% 2px;
+  background-position: 0 100%, 0 100%;
+  background-size: 100% 0, 100% var(--link-underline);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   transition: background-size var(--motion-normal) steps(3, end);
@@ -75,8 +80,7 @@ article a {
 
 /* 悬停时荧光笔从下往上涂满。 */
 article a:hover {
-  background-image: linear-gradient(var(--marker-strong), var(--marker-strong));
-  background-size: 100% 100%;
+  background-size: 100% 100%, 100% var(--link-underline);
 }
 
 article a:visited {

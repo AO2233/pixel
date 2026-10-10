@@ -1,0 +1,146 @@
+/* ======================== 设计变量 ========================
+ * 概念：放課後の部誌 —— 一本双色孔版印刷（Risograph）的社团刊物。
+ *   纸：方格纸底 + 纯色纸面      墨：正文与墨色色块
+ *   专色：--accent（朱）+ --accent-2（青），套色错位、网点、颗粒都来自印刷工艺
+ * 只用三种形状：色带（实色块）、「」括号、窗口（带标题栏的框）。
+ * 暗色模式是"夜间荧光屏版"：同一套版式，专色换成荧光绿与粉。
+ * 组件文件只引用这里的变量；暗色模式只覆盖变量，不重写组件。
+ */
+:root {
+  color-scheme: light;
+
+  /* 纸与墨 */
+  --paper: #fbfaf6;
+  --paper-2: #f3f0e9;
+  --ink: #2f3038;
+  --ink-soft: #77736d;
+  --rule: #c9c2b8;
+  --grid: rgba(47, 48, 56, 0.055);
+
+  /* 强调色：主色 + 套色错位用的补色 */
+  --accent: #b64f5c;
+  --accent-strong: #9f3f4b;
+  --accent-2: #2b8ea6;
+  --accent-3: #f2c94c;      /* 原主题的 mark 黄 */
+  --on-accent: #fffaf2;
+
+  /* 色块与窗口 */
+  --slab-bg: var(--ink);
+  --slab-fg: var(--paper);
+  --window-edge: var(--ink);
+  --dot: color-mix(in srgb, var(--ink) 10%, transparent);
+  --grain: color-mix(in srgb, #000 14%, transparent);
+
+  /* 母题 */
+  --marker: color-mix(in srgb, var(--accent) 20%, transparent);
+  --marker-strong: color-mix(in srgb, var(--accent) 32%, transparent);
+  --marker-yellow: rgba(242, 201, 76, 0.6);
+  --tag-bg: var(--ink);
+  --tag-fg: var(--paper);
+  --tag-shadow: var(--accent);
+  --key-face: var(--paper);
+  --key-side: color-mix(in srgb, var(--ink) 16%, var(--paper));
+  --key-edge: var(--ink);
+  --key-legend: var(--ink);
+
+  /* 抬起高度：所有硬投影统一用这一个偏移 */
+  --lift: 3px;
+  --frame-shadow: color-mix(in srgb, var(--ink) 16%, transparent);
+  /* 图片相框：衬边 / 细线 / 投影 */
+  --photo-mat: var(--paper);
+  --photo-line: var(--rule);
+  --photo-shadow: var(--frame-shadow);
+  --misregister: -1px 0 0 color-mix(in srgb, var(--accent) 55%, transparent),
+    1px 0 0 color-mix(in srgb, var(--accent-2) 45%, transparent);
+
+  /* 局部用色 */
+  --code-block-bg: var(--paper-2);
+  --mask-bg: var(--ink);
+  --selection-text: #fff;
+
+  /* CRT */
+  --crt-overlay:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.14) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  --crt-opacity: 0.18;
+  --crt-shadow: inset 0 0 42px rgba(0, 0, 0, 0.2);
+
+  /* 排版：像素字体在非整数像素下会糊边，字号统一落在整数 px 上 */
+  --font-body: "ZpixA", "fusion", "DOS-c";
+  --font-ui: "DOS", "DOS-c", "ZpixA";
+  --fs-2xs: 0.625rem; /* 10px */
+  --fs-xs: 0.75rem;   /* 12px */
+  --fs-sm: 0.875rem;  /* 14px */
+  --reading-leading: 1.72;
+
+  /* 版面 */
+  --content-max-width: 74ch;
+  --page-gutter: clamp(1rem, 4vw, 1.5rem);
+  --grid-size: 16px;
+  --spine-width: 5.5rem;
+  --space-text: 0.78rem;
+  --space-block: 1.25rem;
+  --space-subsection: 1.5rem;
+  --space-section: 2.25rem;
+
+  --motion-fast: 120ms;
+  --motion-normal: 180ms;
+
+  /* 旧名称：目录与 APlayer 样式仍在使用 */
+  --maincolor: var(--accent);
+  --hovercolor: var(--accent-strong);
+  --textcolor: var(--ink);
+  --mutedcolor: var(--ink-soft);
+  --linecolor: var(--rule);
+  --pagebg: var(--paper);
+  --surfacecolor: var(--paper-2);
+
+  text-autospace: normal;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --paper: #202124;
+    --paper-2: #292b2f;
+    --ink: #efeee9;
+    --ink-soft: #aaa7a0;
+    --rule: #55575d;
+    --grid: rgba(255, 255, 255, 0.035);
+
+    --accent: #9bd6ac;
+    --accent-strong: #b5e3c2;
+    --accent-2: #e58fb0;
+    --accent-3: #f7c948;
+    --on-accent: #15171a;
+
+    --slab-bg: #e9e8e2;
+    --slab-fg: #1a1b1e;
+    --window-edge: #8b8d93;
+    --dot: color-mix(in srgb, var(--ink) 9%, transparent);
+    --grain: color-mix(in srgb, #000 22%, transparent);
+
+    --marker: color-mix(in srgb, var(--accent) 24%, transparent);
+    --marker-strong: color-mix(in srgb, var(--accent) 38%, transparent);
+    --marker-yellow: rgba(247, 201, 72, 0.32);
+    /* 暗色下墨色是浅色：投影成为淡白色偏移，和键帽的浅色底边同一逻辑。 */
+    --frame-shadow: color-mix(in srgb, var(--ink) 22%, transparent);
+    /* 暗色下相框用白边、灰投影，像冲印出来的照片。 */
+    --photo-mat: #ffffff;
+    --photo-line: #ffffff;
+    --photo-shadow: #55575d;
+
+    --key-side: #17181b;
+
+    --code-block-bg: #1c1c1c;
+    --mask-bg: var(--ink);
+    --selection-text: #161719;
+
+    --crt-overlay:
+      linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+      linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+    --crt-opacity: 0.22;
+    --crt-shadow: inset 0 0 58px rgba(0, 0, 0, 0.62);
+  }
+}

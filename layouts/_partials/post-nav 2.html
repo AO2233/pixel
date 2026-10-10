@@ -1,0 +1,18 @@
+{{- /* Older / newer neighbours within the posts section (Pages.Next is the newer one). */ -}}
+{{- $posts := where site.RegularPages "Section" "posts" -}}
+{{- $newer := $posts.Next . -}}
+{{- $older := $posts.Prev . -}}
+<nav class="post-nav" aria-label="Post navigation">
+  {{- with $older }}
+  <a class="post-nav-prev" href="{{ .RelPermalink }}" rel="prev">
+    <span class="post-nav-label">‹ OLDER</span>
+    <span class="post-nav-title">{{ .Title }}</span>
+  </a>
+  {{- end }}
+  {{- with $newer }}
+  <a class="post-nav-next" href="{{ .RelPermalink }}" rel="next">
+    <span class="post-nav-label">NEWER ›</span>
+    <span class="post-nav-title">{{ .Title }}</span>
+  </a>
+  {{- end }}
+</nav>

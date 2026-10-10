@@ -1,0 +1,189 @@
+/* ======================== 文章头：整张纸宽的墨色色块 ========================
+ * 日期标签 → 标题（套色错位）。色块向两侧伸到纸边。
+ */
+.post-header {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0 calc(-1 * var(--page-gutter));
+  padding: 2rem var(--page-gutter) 1.6rem;
+  color: var(--slab-fg);
+  background-color: var(--slab-bg);
+  background-image: radial-gradient(color-mix(in srgb, var(--slab-fg) 12%, transparent) 0.6px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.post-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.post-header .post-date {
+  color: var(--slab-bg);
+  background: var(--slab-fg);
+  box-shadow: 2px 2px 0 var(--accent);
+}
+
+.post-header time {
+  font: inherit;
+  color: inherit;
+}
+
+.post-header h1.title {
+  margin: 0;
+  font-size: 1.5rem; /* 24px */
+  font-weight: 700;
+  line-height: 1.35;
+  text-shadow:
+    -2px 0 0 color-mix(in srgb, var(--accent) 80%, transparent),
+    2px 0 0 color-mix(in srgb, var(--accent-2) 70%, transparent);
+}
+
+.post-header .draft-label {
+  color: var(--slab-fg);
+  border-color: var(--slab-fg);
+}
+
+.body {
+  margin-top: 2rem;
+}
+
+/* ======================== 正文节奏 ======================== */
+article > :where(p, ul, ol) {
+  margin-block: var(--space-text);
+}
+
+article > p + p {
+  margin-top: 0.92rem;
+}
+
+article > :where(.callout, .highlight, .katex-display, .mermaid-scroll, table, .collapsible) {
+  margin-block: var(--space-block);
+}
+
+article > :where(h1, h2) {
+  margin: 2rem 0 0.6rem;
+}
+
+article > h3 {
+  margin: var(--space-subsection) 0 0.5rem;
+}
+
+article > :where(h4, h5, h6) {
+  margin: 1.25rem 0 0.4rem;
+}
+
+article > :where(h1, h2, h3, h4, h5, h6) + * {
+  margin-top: 0;
+}
+
+article > :first-child {
+  margin-top: 0 !important;
+}
+
+article > :last-child {
+  margin-bottom: 0;
+}
+
+/* ======================== 脚注：※ 记号 ======================== */
+a[href^="#fn:"],
+a[href^="#fnref:"] {
+  color: var(--accent);
+  background-image: none;
+}
+
+a[href^="#fn:"] {
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  vertical-align: super;
+  line-height: 0;
+}
+
+a[href^="#fn:"]::before {
+  content: "※";
+}
+
+.footnotes {
+  margin-top: var(--space-section);
+  color: color-mix(in srgb, var(--ink) 85%, var(--ink-soft));
+  font-size: var(--fs-sm);
+}
+
+.footnotes hr {
+  margin-bottom: 1rem;
+}
+
+.footnotes ol {
+  list-style: none;
+  counter-reset: footnote;
+  padding-inline-start: 2.6em;
+}
+
+.footnotes li {
+  position: relative;
+  counter-increment: footnote;
+}
+
+.footnotes li::before {
+  content: "※" counter(footnote);
+  position: absolute;
+  inset-inline-start: -2.6em;
+  color: var(--accent);
+  font-family: var(--font-ui);
+}
+
+.footnotes li:target {
+  background: var(--marker);
+}
+
+/* ======================== 文末导航 ======================== */
+.post-nav {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.75rem 1.5rem;
+  margin-top: var(--space-section);
+  padding-top: 1rem;
+  border-top: 1px dashed var(--rule);
+  font-size: var(--fs-sm);
+}
+
+.post-nav a {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.post-nav .post-nav-next {
+  grid-column: 2;
+  text-align: right;
+}
+
+.post-nav-label {
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+}
+
+.post-nav-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color var(--motion-fast) ease;
+}
+
+.post-nav a:hover .post-nav-title {
+  color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .post-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .post-nav .post-nav-next {
+    grid-column: 1;
+  }
+}
