@@ -1,15 +1,13 @@
-/* ======================== 文章头：整张纸宽的墨色色块 ========================
- * 日期标签 → 标题（套色错位）。色块向两侧伸到纸边。
+/* ======================== 文章头：透明，写在纸面上 ========================
+ * 日期标签 → 标题（套色错位）→ 一条细线。
  */
 .post-header {
   display: grid;
   gap: 0.6rem;
+  /* 细线伸到纸面两侧边缘，与纸的左右边线闭合。 */
   margin: 0 calc(-1 * var(--page-gutter));
-  padding: 2rem var(--page-gutter) 1.6rem;
-  color: var(--slab-fg);
-  background-color: var(--slab-bg);
-  background-image: radial-gradient(color-mix(in srgb, var(--slab-fg) 12%, transparent) 0.6px, transparent 1px);
-  background-size: 4px 4px;
+  padding: 1.25rem var(--page-gutter) 0.9rem;
+  border-bottom: 1px solid var(--rule);
 }
 
 .post-header .meta {
@@ -18,12 +16,6 @@
   align-items: center;
   gap: 0.5rem;
   margin: 0;
-}
-
-.post-header .post-date {
-  color: var(--slab-bg);
-  background: var(--slab-fg);
-  box-shadow: 2px 2px 0 var(--accent);
 }
 
 .post-header time {
@@ -41,13 +33,8 @@
     2px 0 0 color-mix(in srgb, var(--accent-2) 70%, transparent);
 }
 
-.post-header .draft-label {
-  color: var(--slab-fg);
-  border-color: var(--slab-fg);
-}
-
 .body {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 /* ======================== 正文节奏 ======================== */
