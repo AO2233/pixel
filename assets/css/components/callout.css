@@ -1,0 +1,48 @@
+/* ======================== 标注框：档案夹 ========================
+ * 2px 窗口边框，左上角挂一枚档案夹耳标；没有类型时显示 MEMO。
+ */
+.callout {
+  --callout-color: var(--accent);
+  position: relative;
+  margin-top: calc(var(--space-block) + 1.4rem) !important;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--window-edge);
+  background: var(--paper);
+  box-shadow: var(--lift) var(--lift) 0 var(--frame-shadow);
+}
+
+.callout-note,
+.callout-tip {
+  --callout-color: var(--accent-2);
+}
+
+/* 耳标：贴在边框上沿外侧，和边框连成一体。 */
+.callout::before,
+.callout-label {
+  position: absolute;
+  left: -2px;
+  bottom: 100%;
+  padding: 0.1rem 0.7rem 0.05rem;
+  color: var(--slab-fg);
+  background: var(--window-edge);
+  box-shadow: inset 0 3px 0 var(--callout-color);
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.callout:not(:has(> .callout-label))::before {
+  content: "MEMO";
+}
+
+.callout > :first-child,
+.callout > div > :first-child {
+  margin-top: 0;
+}
+
+.callout > :last-child,
+.callout > div > :last-child {
+  margin-bottom: 0;
+}

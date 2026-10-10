@@ -1,0 +1,21 @@
+<div class="dateDisplay" data-digit-base="{{ "counter/gelbooru/" | relURL }}">
+  <script>
+    (function () {
+      const container = document.currentScript.parentElement;
+      const today = new Date();
+      const digits = [
+        today.getFullYear(),
+        String(today.getMonth() + 1).padStart(2, "0"),
+        String(today.getDate()).padStart(2, "0"),
+      ].join("");
+
+      for (const digit of digits) {
+        const img = document.createElement("img");
+        img.src = container.dataset.digitBase + digit + ".gif";
+        img.alt = digit;
+        img.className = "digit";
+        container.appendChild(img);
+      }
+    })();
+  </script>
+</div>

@@ -40,7 +40,7 @@
 git submodule add https://github.com/AO2233/pixel.git themes/pixel
 ```
 
-在 Hugo 配置中启用：
+Pixel 需要 Hugo **0.146.0 或更高版本**（无需 extended 版）。在 Hugo 配置中启用：
 
 ```yaml
 theme: pixel
@@ -54,6 +54,23 @@ Footer 图标会在构建时从 `assets/icons/social/` 内联。请从内置的
 [图标目录](assets/icons/CATALOG.md)中选择文件名，填入 `params.social` 的
 `icon` 即可启用。图标在浅色和暗色模式下都会继承页脚颜色。需要扩展时，
 只需将 SVG 放入同一目录，不必增加浏览器端 JavaScript。
+
+## 主题结构
+
+```text
+assets/css/          主题样式，构建时合并为一个带指纹的文件
+  tokens.css         颜色、字号、间距变量；暗色模式只覆盖变量
+  base / layout / headings / article / media / code
+  components/        目录、文章列表、分页、折叠栏、标注框、遮罩
+  pages/ vendor/ effects/
+assets/js/main.js    入口，由 Hugo 内置 esbuild（js.Build）打包
+assets/js/modules/   每个功能一个模块（目录、嵌入播放器、图片显现……）
+layouts/             Hugo ≥ 0.146 模板结构（_partials、_shortcodes、_markup）
+static/vendor/       第三方库，仅在需要的页面加载
+```
+
+CSS 合并顺序（即层叠顺序）写在 `layouts/_partials/head/styles.html`。
+`hugo`（生产构建）会压缩并加指纹；`hugo server` 输出未压缩版本便于调试。
 
 ## 许可与致谢
 

@@ -1,0 +1,172 @@
+/* ======================== 文章目录 ======================== */
+.post-toc {
+  color: var(--mutedcolor);
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  line-height: 1.35;
+}
+
+.post-toc[hidden] {
+  display: none !important;
+}
+
+.post-toc--desktop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  display: block;
+  width: min(11rem, calc(100vw - 1rem));
+  min-width: min(9rem, calc(100vw - 1rem));
+  min-height: min(6rem, calc(100vh - 1rem));
+  max-width: calc(100vw - 1rem);
+  max-height: calc(100vh - 1rem);
+  overflow: hidden;
+}
+
+.post-toc-card {
+  border: 2px solid var(--window-edge);
+  color: var(--textcolor);
+  background: var(--pagebg);
+  box-shadow: var(--lift) var(--lift) 0 var(--frame-shadow);
+}
+
+.post-toc-label {
+  letter-spacing: 0.14em;
+}
+
+.post-toc-card nav {
+  max-height: min(60vh, 26rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-block: 0.42rem;
+  scrollbar-width: none;
+}
+
+.post-toc-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2rem;
+  padding: 0.42rem 0.55rem;
+  background: var(--tag-bg);
+}
+
+ul.post-toc-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.post-toc-list > li {
+  --toc-indent: 0.42rem;
+  width: 100%;
+  margin: 0;
+}
+
+ul.post-toc-list > li::before {
+  display: none;
+}
+
+/* 层级用 DOS 目录树表示（├─ └─ │），缩进由树线本身给出；一级标题加粗。 */
+.post-toc-level-1 > a {
+  font-weight: 700;
+}
+
+.post-toc a {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  padding: 0.28rem 0.42rem 0.28rem var(--toc-indent);
+  border-block: 1px solid transparent;
+  color: inherit;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition:
+    color var(--motion-fast) steps(2, end),
+    background-color var(--motion-fast) steps(2, end),
+    border-color var(--motion-fast) steps(2, end);
+}
+
+.post-toc-branch {
+  flex: none;
+  margin-right: 0.35em;
+  color: var(--rule);
+  font-family: var(--font-ui);
+  white-space: pre;
+}
+
+.post-toc a:is(:hover, .is-active) .post-toc-branch {
+  color: var(--accent);
+}
+
+.post-toc-text {
+  min-width: 0;
+}
+
+.post-toc a:is(:hover, .is-active) {
+  color: var(--textcolor);
+  border-color: color-mix(in srgb, var(--maincolor) 24%, var(--linecolor));
+}
+
+.post-toc a:hover {
+  background: color-mix(in srgb, var(--maincolor) 9%, var(--pagebg));
+}
+
+.post-toc a.is-active {
+  background: color-mix(in srgb, var(--maincolor) 12%, var(--pagebg));
+  font-weight: 700;
+}
+
+.post-toc--desktop .post-toc-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: inherit;
+  min-height: 0;
+}
+
+.post-toc--desktop .post-toc-header {
+  flex: none;
+  user-select: none;
+}
+
+.post-toc--desktop .post-toc-card nav {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.post-toc--desktop.is-user-sized .post-toc-card {
+  height: 100%;
+}
+
+.post-toc--desktop.is-user-sized .post-toc-card nav {
+  max-height: none;
+  padding-bottom: 0.9rem;
+}
+
+.post-toc-resize-handle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 1.1rem;
+  height: 1.1rem;
+  touch-action: none;
+  cursor: nwse-resize !important;
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0 46%,
+      var(--linecolor) 46% 52%,
+      transparent 52% 64%,
+      var(--maincolor) 64% 70%,
+      transparent 70%
+    );
+}
+
+html.has-context-toc {
+  -webkit-touch-callout: none;
+}

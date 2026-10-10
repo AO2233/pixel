@@ -1,0 +1,27 @@
+{{- /* Theme CSS is one bundle; order below is the cascade order. */ -}}
+{{- $sources := slice
+  "fonts" "tokens" "base" "motifs" "layout" "headings" "article" "media" "code"
+  "components/toc" "components/post-list" "components/pagination"
+  "components/collapsible" "components/callout" "components/spoiler"
+  "pages/log" "pages/404"
+  "vendor/aplayer"
+  "effects/crt" "effects/reduced-motion"
+-}}
+{{- $files := slice }}
+{{- range $sources }}
+  {{- $files = $files | append (resources.Get (printf "css/%s.css" .)) }}
+{{- end }}
+{{- $css := $files | resources.Concat "css/pixel.css" }}
+{{- if hugo.IsProduction }}
+  {{- $css = $css | minify | fingerprint }}
+{{- end }}
+{{- with .aplayer }}
+<link rel="stylesheet" href="{{ "vendor/aplayer/APlayer.min.css" | relURL }}">
+{{- end }}
+{{- with .zoom }}
+<link rel="stylesheet" href="{{ "vendor/zoom/style.min.css" | relURL }}">
+{{- end }}
+{{- with .math }}
+<link rel="stylesheet" href="{{ "vendor/katex/katex.min.css" | relURL }}">
+{{- end }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}"{{ with $css.Data.Integrity }} integrity="{{ . }}"{{ end }}>

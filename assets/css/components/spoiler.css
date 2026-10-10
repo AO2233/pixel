@@ -1,0 +1,19 @@
+/* ======================== 遮罩（萌娘百科式黑幕） ======================== */
+.moe-mask {
+  display: inline-block;
+  padding: 0 4px;
+  color: transparent;
+  background-color: var(--mask-bg);
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.moe-mask:hover {
+  color: inherit;
+  background-color: transparent;
+}
+
+/* 直接写在正文里（不在段落中）的黑幕当作一个段落：独占一行。 */
+article > .moe-mask {
+  display: table;
+  margin-block: var(--space-text);
+}

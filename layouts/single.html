@@ -1,0 +1,26 @@
+{{ define "main" }}
+<main>
+  {{ partial "post-header.html" (dict "page" . "label" "POSTED" "date" .Date) }}
+  <div class="post-layout post-layout--with-toc">
+    <aside class="post-toc post-toc--desktop" aria-label="Table of contents" hidden>
+      <div class="post-toc-card">
+        <div class="post-toc-header">
+          <span class="post-toc-label">INDEX</span>
+        </div>
+        <nav>
+          <ul class="post-toc-list"></ul>
+        </nav>
+        <span class="post-toc-resize-handle" aria-hidden="true"></span>
+      </div>
+    </aside>
+    <section class="body">
+      <article>
+        {{ .Content }}
+      </article>
+      {{- if eq .Section "posts" }}
+      {{ partial "post-nav.html" . }}
+      {{- end }}
+    </section>
+  </div>
+</main>
+{{ end }}

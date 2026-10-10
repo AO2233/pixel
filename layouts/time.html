@@ -1,0 +1,10 @@
+{{ define "main" }}
+<main class="log-page">
+  {{ partial "post-header.html" (dict "page" . "label" "UPDATED" "date" .Lastmod) }}
+  <section class="body">
+    <article>
+      {{ .Content }}
+    </article>
+  </section>
+</main>
+{{ end }}

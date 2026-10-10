@@ -1,0 +1,14 @@
+{{- /* Initialised by assets/js/modules/embeds.js */ -}}
+{{- $truthy := slice true "true" -}}
+{{- $config := dict
+  "fixed" (in $truthy (.Get "fix"))
+  "autoplay" (in $truthy (.Get "auto"))
+  "audio" (dict
+    "name" (.Get "name" | default "Audio")
+    "artist" (.Get "artist" | default "")
+    "url" (.Get "url" | relURL)
+    "cover" (cond (ne (.Get "cover" | default "") "") (.Get "cover" | relURL) "")
+    "lrc" (.Get "lrc" | default "")
+  )
+-}}
+<div id="{{ .Get "id" | default (printf "aplayer-%d" .Ordinal) }}" data-aplayer="{{ jsonify $config }}"></div>

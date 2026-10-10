@@ -1,0 +1,10 @@
+{{- if eq .Type "mermaid" -}}
+  {{- partial "mermaid.html" (dict "page" .Page "source" .Inner) -}}
+{{- else if in (slice "note" "tip" "warning" "caution") .Type -}}
+  <div class="callout callout-{{ .Type }}">
+    <strong class="callout-label">{{ .Type }}</strong>
+    <div>{{ .Inner | .Page.RenderString }}</div>
+  </div>
+{{- else -}}
+  {{- transform.Highlight .Inner .Type .Options -}}
+{{- end -}}

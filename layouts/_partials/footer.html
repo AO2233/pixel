@@ -1,0 +1,13 @@
+<footer class="site-footer">
+  <div class="footer-social">
+    {{- range site.Params.social }}
+    <a class="soc" href="{{ .url }}" title="{{ .name }}" aria-label="{{ .name }}">
+      {{- partial "social-icon.html" .icon -}}
+    </a>
+    {{- end }}
+  </div>
+  <picture class="no-ai-logo">
+    <source srcset="{{ "svg/no-ai-black.svg" | relURL }}" media="(prefers-color-scheme: dark)">
+    <img src="{{ "svg/no-ai-white.svg" | relURL }}" alt="Written by a human, not by AI" width="128" height="37">
+  </picture>
+</footer>

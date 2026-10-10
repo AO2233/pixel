@@ -1,0 +1,2 @@
+{{- /* Initialised by assets/js/modules/embeds.js */ -}}
+<div id="{{ .Get "id" | default (printf "pdf-%d" .Ordinal) }}" data-pdf="{{ jsonify (dict "src" (.Get "src")) }}"></div>

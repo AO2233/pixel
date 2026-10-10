@@ -117,7 +117,7 @@ BVID 也可以写成位置参数：
 /counter/gelbooru/9.gif
 ```
 
-主题已经包含这些文件。由于路径从域名根目录开始，部署在子路径下的站点可能需要调整 `layouts/shortcodes/date.html`。
+主题已经包含这些文件，路径通过 `relURL` 解析，部署在子路径下的站点无需修改。
 
 ## `dplayer`
 
@@ -307,7 +307,7 @@ sequenceDiagram
 
 ### 数学公式
 
-KaTeX 支持行间与行内定界符：
+公式在构建时由 KaTeX 渲染（`transform.ToMath`），页面不再加载数学相关 JavaScript，只在含公式的页面加载 KaTeX 样式表。需要启用 Goldmark 的 `passthrough` 扩展，配置见主题的 [`hugo.yaml`](hugo.yaml)：
 
 ```markdown
 $$ E = mc^2 $$
@@ -315,7 +315,7 @@ $$ E = mc^2 $$
 \( a^2 + b^2 = c^2 \)
 ```
 
-行内公式建议使用 `\(...\)`。如果页面只有单美元符号形式的行内公式，可能不会触发 KaTeX 的按需加载。
+所有已配置的定界符（包括单美元符号行内公式）都会被识别。公式有误时构建会给出警告，并按原文输出。
 
 ### Hugo 内置功能
 

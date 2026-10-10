@@ -1,3 +1,8 @@
+# Pixel 主题参考配置（站点可直接复制使用）
+module:
+  hugoVersion:
+    min: "0.146.0"
+
 # 基本参数
 baseURL: https://ao2233.github.io/
 title: 帰宅部
@@ -14,6 +19,7 @@ pagination:
 params:
   favicon: "duck.ico"
   subtitle: さらば、すべてのエヴァンゲリオン
+  htmlLang: zh-CN # <html lang>，默认 zh-CN
   # Bundled icon catalog: assets/icons/CATALOG.md
   social:
     - name: GitHub

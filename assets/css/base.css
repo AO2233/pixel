@@ -1,0 +1,302 @@
+/* ======================== 基础 ======================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: var(--reading-leading);
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+}
+
+/* 方格纸：页面底层，正文栏在 layout.css 里铺一张纯色纸。 */
+body {
+  margin: 0;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-attachment: fixed;
+  font-kerning: normal;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+/* 复古界面：全站保持默认指针。 */
+* {
+  cursor: default !important;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--selection-text);
+}
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible,
+summary:focus-visible {
+  outline: 1px dashed var(--accent);
+  outline-offset: 3px;
+}
+
+hr {
+  height: 1px;
+  margin: var(--space-section) 0;
+  border: 0;
+  background: repeating-linear-gradient(90deg, var(--rule) 0 8px, transparent 8px 12px);
+}
+
+/* ======================== 正文文字标记 ======================== */
+article a {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: background-size var(--motion-normal) steps(3, end);
+}
+
+/* 悬停时荧光笔从下往上涂满。 */
+article a:hover {
+  background-image: linear-gradient(var(--marker-strong), var(--marker-strong));
+  background-size: 100% 100%;
+}
+
+article a:visited {
+  color: color-mix(in srgb, var(--accent) 60%, var(--ink));
+}
+
+article a:has(img),
+.media-figure > a {
+  background: none;
+}
+
+article strong {
+  font-weight: 700;
+}
+
+/* 傍点：日文排版的强调方式，替代像素字体里并不存在的斜体。 */
+article em {
+  font-style: normal;
+  text-emphasis: filled dot var(--accent);
+  -webkit-text-emphasis: filled dot var(--accent);
+  text-emphasis-position: over right;
+  -webkit-text-emphasis-position: over right;
+}
+
+article del {
+  color: var(--ink-soft);
+  text-decoration-line: line-through;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-decoration-skip-ink: none;
+}
+
+article mark {
+  color: inherit;
+  background: linear-gradient(transparent 45%, var(--marker-yellow) 45%);
+}
+
+article ruby rt {
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: var(--fs-2xs);
+  letter-spacing: 0.05em;
+}
+
+article kbd {
+  display: inline-block;
+  margin: 0 0.1em;
+  padding: 0 0.35em;
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  vertical-align: 0.1em;
+}
+
+/* ======================== 列表 ======================== */
+ul:not(.pagination) {
+  list-style: none;
+  padding-left: 2ch;
+}
+
+ul:not(.pagination) > li {
+  position: relative;
+}
+
+ul:not(.pagination) > li::before {
+  content: "・";
+  position: absolute;
+  inset-inline-start: -2ch;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+ol {
+  padding-inline-start: 2em;
+}
+
+ol > li::marker {
+  color: var(--accent);
+  font-family: var(--font-ui);
+}
+
+article :where(ul, ol) :where(ul, ol) {
+  margin-block: 0.25rem;
+}
+
+article li > p {
+  margin-block: 0.25rem;
+}
+
+article li + li {
+  margin-top: 0.2rem;
+}
+
+article li:has(> input[type="checkbox"])::before {
+  content: none;
+}
+
+article input[type="checkbox"] {
+  margin: 0 0.45em 0 0;
+  accent-color: var(--accent);
+}
+
+dl {
+  margin-block: var(--space-text);
+}
+
+dt {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+dd {
+  margin: 0.25rem 0 0.7rem 2ch;
+}
+
+/* ======================== 引用：「」括号 ========================
+ * 日文的引用方式：左上「、右下」，底纹是细网点；结尾保留 ▼ 翻页符。
+ * 框的宽度随内容收缩：一行的短引用不会空出半页，」紧跟在文字旁边。
+ */
+blockquote {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin: var(--space-block) 0;
+  padding: 0.3rem 1.45rem 0.3rem 1.05rem; /* 右侧多留一点给 ▼ */
+  background-image: radial-gradient(var(--dot) 0.6px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+blockquote::before,
+blockquote::after {
+  position: absolute;
+  color: var(--accent);
+  font-size: 1.25rem; /* 20px */
+  line-height: 1;
+}
+
+/* 括号下沉到与首行文字基本同高，」相应上提到末行，仍保持角括号的形态。 */
+blockquote::before {
+  content: "「";
+  top: 0.5rem;
+  left: -0.2rem;
+}
+
+blockquote::after {
+  content: "」";
+  right: -0.2rem;
+  bottom: 0.5rem;
+}
+
+blockquote p {
+  margin: 0.2rem 0;
+}
+
+blockquote blockquote {
+  margin: 0.25rem 0;
+  padding: 0.15rem 0.65rem;
+  background: none;
+}
+
+blockquote blockquote::before,
+blockquote blockquote::after {
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+blockquote p:last-child::after,
+.callout p:last-child::after {
+  content: "▼";
+  display: inline-block;
+  margin-left: 0.4rem;
+  color: var(--accent);
+  font-size: 0.75em;
+  animation: page-wait 0.8s steps(2, start) infinite;
+}
+
+@keyframes page-wait {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0; transform: translateY(2px); }
+}
+
+/* ======================== 表格：墨色表头，虚线分行 ======================== */
+table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
+  border: 1px solid var(--rule);
+  border-collapse: collapse;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  font-size: var(--fs-sm);
+  box-shadow: var(--lift) var(--lift) 0 var(--frame-shadow);
+}
+
+table th,
+table td {
+  padding: 0.35rem 0.75rem;
+  text-align: left;
+}
+
+table th + th {
+  border-left: 1px solid color-mix(in srgb, var(--tag-fg) 25%, transparent);
+}
+
+table td + td {
+  border-left: 1px dashed var(--rule);
+}
+
+table tr + tr td {
+  border-top: 1px dashed var(--rule);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

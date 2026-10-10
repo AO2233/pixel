@@ -1,0 +1,4 @@
+{{- /* Initialised by assets/js/modules/embeds.js */ -}}
+<div class="media-embed media-embed--wide">
+  <div id="{{ .Get "id" | default (printf "dplayer-%d" .Ordinal) }}" data-dplayer="{{ jsonify (dict "url" (.Get "url")) }}"></div>
+</div>

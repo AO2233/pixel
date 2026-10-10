@@ -1,0 +1,27 @@
+{{- $context := .context -}}
+{{- /* 首页开场：像素 galgame 的对话窗 —— 左边是头像框，右边是台词（副标题）。 */}}
+{{- with $context.Site.Params.subtitle }}
+<section class="hero">
+  <div class="hero-window">
+    <img class="hero-face" src="{{ site.Params.avatar | default "avatar.png" | relURL }}" alt="" width="112" height="112">
+    <p class="site-description">{{ . | markdownify }}</p>
+  </div>
+</section>
+{{- end }}
+
+{{- $paginator := $context.Paginate .pages }}
+<main class="list">
+  {{- range $paginator.Pages.GroupByDate "2006" }}
+  <section class="year-group">
+    <h2 class="year-heading">
+      <span class="year-label keycap">{{ .Key }}</span>
+    </h2>
+    <div class="year-entries">
+      {{- range .Pages }}
+      {{ partial "post-list-entry.html" (dict "page" . "dateFormat" "01.02") }}
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+  {{ partial "paginator.html" $paginator }}
+</main>

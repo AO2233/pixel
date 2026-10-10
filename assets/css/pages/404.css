@@ -1,0 +1,36 @@
+/* ======================== 404 ======================== */
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+.error-page .error-label {
+  margin: 0;
+}
+
+.error-page .error-code {
+  margin: 0.25rem 0 0;
+  color: var(--accent);
+  font-size: clamp(3rem, 18vw, 7rem);
+  line-height: 1;
+  text-shadow: -3px 0 0 color-mix(in srgb, var(--accent-2) 60%, transparent);
+}
+
+.error-page p {
+  margin: 0;
+}
+
+.error-page .error-return {
+  margin: 0.5rem 0 1rem;
+  padding: 0.3rem 0.8rem;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+}
+
+.error-page img {
+  width: min(18rem, 70vw);
+}

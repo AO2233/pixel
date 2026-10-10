@@ -1,0 +1,8 @@
+{{- $title := site.Title }}
+{{- if not .IsHome }}{{ $title = printf "%s - %s" .Title site.Title }}{{ end }}
+<title>{{ $title }}</title>
+<link rel="icon" href="{{ site.Params.favicon | relURL }}">
+{{- partial "head/seo.html" (dict "page" . "title" $title) }}
+{{- with .OutputFormats.Get "rss" }}
+{{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{- end }}

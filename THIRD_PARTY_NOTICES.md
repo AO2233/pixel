@@ -15,7 +15,7 @@ Pixel 使用了以下开源组件，感谢这些项目的作者与贡献者。
 | Nintendo Switch logo | — | Nintendo brand icon | Public domain (simple geometry); trademark rights remain with Nintendo | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nintendo_Switch_Logo_(without_text).svg) |
 | medium-zoom | 1.1.0 | Image zoom | MIT | [francoischalifour/medium-zoom](https://github.com/francoischalifour/medium-zoom) |
 
-The Spotify shortcode template contains code by Veriphor LLC under the Apache License 2.0; its original notice is retained in `layouts/shortcodes/spotify.html`.
+The Spotify shortcode template contains code by Veriphor LLC under the Apache License 2.0; its original notice is retained in `layouts/_shortcodes/spotify.html`.
 
 These components are not relicensed under Pixel's license. Each component remains subject to its upstream license and copyright notice. When redistributing the theme, keep this file and any notices retained in the source files.
 

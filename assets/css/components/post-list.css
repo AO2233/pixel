@@ -1,0 +1,172 @@
+/* ======================== 首页 ========================
+ * 开场是头像说出副标题；下面是目录：年份刻在键帽上，条目是"标题 …… 日期"。
+ */
+
+/* ---------- 开场：对话窗 ----------
+ * 通栏铺方格纸（与页面底层的网格对齐：两者都固定在视口上），
+ * 中间是一个像素 galgame 对话窗：头像框 + 台词 + 闪烁的 ▼。
+ * 通栏：外边距 (100% - 100vw) / 2（书脊是悬浮的，不占宽度）。
+ */
+.hero {
+  margin-inline: calc((100% - 100vw) / 2);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-attachment: fixed;
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* 对话窗：像素双线边框（外墨线 / 纸色间隙 / 内墨线），窗体略透出方格纸。 */
+.hero-window {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1.5rem;
+  width: calc(100% - 2 * var(--page-gutter));
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 1.25rem 2.75rem 1.25rem 1.25rem;
+  border: 2px solid var(--window-edge);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  box-shadow:
+    inset 0 0 0 2px var(--paper),
+    inset 0 0 0 4px var(--window-edge),
+    var(--lift) var(--lift) 0 var(--frame-shadow);
+}
+
+/* 头像框：角色立绘的小窗。 */
+.hero-face {
+  width: 112px;
+  height: 112px;
+  margin: 0;
+  border: 2px solid var(--window-edge);
+  image-rendering: pixelated;
+}
+
+.hero-window .site-description {
+  width: auto;
+  margin: 0;
+  color: var(--ink);
+  background: none;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.hero-window::after {
+  content: "▼";
+  position: absolute;
+  right: 1.1rem;
+  bottom: 0.9rem;
+  color: var(--accent);
+  font-size: 0.75rem;
+  animation: page-wait 0.8s steps(2, start) infinite;
+}
+
+@media (max-width: 560px) {
+  .hero-window {
+    gap: 1rem;
+    padding: 0.9rem 2.25rem 0.9rem 0.9rem;
+  }
+
+  .hero-face {
+    width: 64px;
+    height: 64px;
+  }
+
+  .hero-window .site-description {
+    font-size: 1rem;
+  }
+}
+
+/* ---------- 目录 ---------- */
+.list {
+  margin-top: 3rem;
+}
+
+.year-group + .year-group {
+  margin-top: 2.25rem;
+}
+
+.year-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0 0 0.6rem;
+}
+
+.year-heading .year-label {
+  padding: 0.05rem 0.55rem 0.2rem;
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+}
+
+/* 条目：标题 …… 日期。整行可点。 */
+.post-list-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, max-content) minmax(1.5rem, 1fr) auto;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.3rem 0.35rem;
+  transition: background-color var(--motion-fast) steps(2, end);
+}
+
+.list-item {
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.list-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.list-item:visited {
+  color: color-mix(in srgb, var(--ink) 70%, var(--paper));
+}
+
+.entry-title .draft-label {
+  margin-left: 0.5rem;
+}
+
+/* 点线引导符：印刷目录的排法。 */
+.entry-leader {
+  align-self: end;
+  height: 0.55em;
+  margin-bottom: 0.45em;
+  background: radial-gradient(circle, var(--rule) 1px, transparent 1.5px) 0 50% / 6px 6px repeat-x;
+}
+
+.entry-date {
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+  transition: color var(--motion-fast) ease;
+}
+
+.post-list-entry:hover {
+  background-color: var(--marker);
+}
+
+.post-list-entry:hover .entry-date {
+  color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .post-list-entry {
+    gap: 0.4rem;
+    padding-inline: 0;
+  }
+
+  .entry-date {
+    font-size: var(--fs-xs);
+  }
+}

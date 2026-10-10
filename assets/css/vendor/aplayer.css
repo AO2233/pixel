@@ -1,0 +1,134 @@
+/* ======================== APlayer：与书页表面和细线语言统一 ======================== */
+.aplayer {
+  max-width: 100%;
+  margin: var(--space-block) auto;
+  border: 2px solid var(--window-edge);
+  box-shadow: var(--lift) var(--lift) 0 var(--frame-shadow);
+  border-radius: 0;
+  color: var(--textcolor);
+  background: var(--surfacecolor);
+  font-family: inherit;
+}
+
+.aplayer .aplayer-body,
+.aplayer .aplayer-list {
+  background: var(--surfacecolor);
+}
+
+.aplayer .aplayer-pic {
+  border-right: 1px solid var(--linecolor);
+  filter: saturate(0.82) contrast(0.96);
+}
+
+.aplayer .aplayer-pic .aplayer-button {
+  border-radius: 0;
+  background: rgba(32, 33, 36, 0.52);
+  box-shadow: none;
+}
+
+.aplayer .aplayer-info .aplayer-music .aplayer-title {
+  color: var(--textcolor);
+  font-family: inherit;
+  font-size: var(--fs-sm);
+}
+
+.aplayer .aplayer-info .aplayer-music .aplayer-author,
+.aplayer .aplayer-info .aplayer-controller .aplayer-time,
+.aplayer .aplayer-list ol li .aplayer-list-index,
+.aplayer .aplayer-list ol li .aplayer-list-author,
+.aplayer .aplayer-lrc p {
+  color: var(--mutedcolor);
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar,
+.aplayer .aplayer-info .aplayer-controller .aplayer-volume-wrap .aplayer-volume-bar-wrap .aplayer-volume-bar {
+  border-radius: 0;
+  background: var(--linecolor);
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
+  background: color-mix(in srgb, var(--mutedcolor) 58%, transparent);
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played,
+.aplayer .aplayer-info .aplayer-controller .aplayer-volume-wrap .aplayer-volume-bar-wrap .aplayer-volume-bar .aplayer-volume,
+.aplayer .aplayer-list ol li .aplayer-list-cur {
+  background: var(--maincolor) !important;
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
+  border-radius: 0;
+  background: var(--maincolor);
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path,
+.aplayer .aplayer-miniswitcher .aplayer-icon path {
+  fill: var(--mutedcolor);
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path,
+.aplayer .aplayer-miniswitcher .aplayer-icon:hover path {
+  fill: var(--maincolor);
+}
+
+.aplayer.aplayer-withlist .aplayer-info,
+.aplayer .aplayer-list ol li {
+  border-color: var(--linecolor);
+}
+
+.aplayer .aplayer-list ol li:hover,
+.aplayer .aplayer-list ol li.aplayer-list-light {
+  background: color-mix(in srgb, var(--maincolor) 8%, var(--surfacecolor));
+}
+
+.aplayer .aplayer-lrc::before {
+  background: linear-gradient(to bottom, var(--surfacecolor), transparent);
+}
+
+.aplayer .aplayer-lrc::after {
+  background: linear-gradient(to bottom, transparent, var(--surfacecolor));
+}
+
+.aplayer.aplayer-fixed {
+  border: 1px solid var(--key-edge);
+  border-width: 1px 1px 0 0;
+  box-shadow: none;
+  bottom: 0 !important;
+  z-index: 99999 !important;
+  max-width: 400px;
+}
+
+.aplayer.aplayer-fixed .aplayer-body {
+  bottom: 0 !important;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  border-top: 1px solid var(--linecolor);
+  background: var(--surfacecolor);
+}
+
+/* 桌面端左侧是书脊：吸底播放器整体从书脊右侧开始，避免盖住书脊底部的导航。
+ * APlayer 的外层、播放条和歌词三者各自 position: fixed; left: 0，需要一起偏移。 */
+@media (min-width: 1024px) {
+  .aplayer.aplayer-fixed,
+  .aplayer.aplayer-fixed .aplayer-body,
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    left: var(--spine-width) !important;
+    transition: left 160ms steps(4, end);
+  }
+
+  /* 书脊收起时，播放器贴回屏幕左边。 */
+  html.spine-hidden .aplayer.aplayer-fixed,
+  html.spine-hidden .aplayer.aplayer-fixed .aplayer-body,
+  html.spine-hidden .aplayer.aplayer-fixed .aplayer-lrc {
+    left: 0 !important;
+  }
+}
+
+.aplayer.aplayer-fixed .aplayer-info {
+  border-top-color: var(--linecolor);
+}
+
+.aplayer .aplayer-miniswitcher {
+  border-radius: 0;
+  border-left: 1px solid var(--linecolor);
+  background: var(--surfacecolor);
+}

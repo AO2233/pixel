@@ -1,0 +1,5 @@
+{{- /* Shared by the mermaid shortcode and ```mermaid code fences. */ -}}
+{{- .page.Store.Set "hasMermaid" true -}}
+<div class="mermaid-scroll">
+  <div class="mermaid">{{ .source | safeHTML }}</div>
+</div>

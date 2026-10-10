@@ -1,0 +1,19 @@
+{{- /* Vendor scripts are deferred and run before the theme bundle, in order. */ -}}
+{{- $vendors := dict
+  "aplayer" "vendor/aplayer/APlayer.min.js"
+  "dplayer" "vendor/dplayer/DPlayer.min.js"
+  "zoom" "vendor/zoom/medium-zoom.min.js"
+  "pdf" "vendor/pdfobject.min.js"
+  "mermaid" "vendor/mermaid.min.js"
+-}}
+{{- range $feature, $path := $vendors }}
+  {{- if index $ $feature }}
+<script defer src="{{ $path | relURL }}"></script>
+  {{- end }}
+{{- end }}
+{{- $opts := dict "targetPath" "js/pixel.js" "minify" hugo.IsProduction "target" "es2020" "format" "iife" }}
+{{- $js := resources.Get "js/main.js" | js.Build $opts }}
+{{- if hugo.IsProduction }}
+  {{- $js = $js | fingerprint }}
+{{- end }}
+<script defer src="{{ $js.RelPermalink }}"{{ with $js.Data.Integrity }} integrity="{{ . }}"{{ end }}></script>

@@ -117,7 +117,7 @@ This shortcode has no parameters. It runs in the browser, so the result is the r
 /counter/gelbooru/9.gif
 ```
 
-The files are included with the theme. Because the paths begin at the domain root, a site deployed below a subpath may need to adjust `layouts/shortcodes/date.html`.
+The files are included with the theme and resolved with `relURL`, so sites deployed below a subpath work without changes.
 
 ## `dplayer`
 
@@ -307,7 +307,7 @@ An image destination ending in `.mp4`, `.webm`, or `.ogg` becomes a native video
 
 ### Math
 
-KaTeX supports display and inline delimiters:
+Math is typeset with KaTeX at build time (`transform.ToMath`), so pages ship no math JavaScript—only the KaTeX stylesheet, and only when a formula is present. It requires Goldmark's `passthrough` extension, configured as in the theme's [`hugo.yaml`](hugo.yaml):
 
 ```markdown
 $$ E = mc^2 $$
@@ -315,7 +315,7 @@ $$ E = mc^2 $$
 \( a^2 + b^2 = c^2 \)
 ```
 
-Prefer `\(...\)` for inline math. Pages containing only single-dollar inline expressions may not trigger the conditional KaTeX loader.
+All configured delimiters, including single-dollar inline math, are detected. An invalid formula produces a build warning and is left as plain text.
 
 ### Hugo built-ins
 

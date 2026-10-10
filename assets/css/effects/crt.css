@@ -1,0 +1,19 @@
+/* ======================== CRT 扫描线 ======================== */
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: var(--crt-overlay);
+  background-size: 100% 4px, 8px 100%;
+  box-shadow: var(--crt-shadow);
+  opacity: var(--crt-opacity);
+  pointer-events: none;
+}
+
+.decrypt-cursor {
+  display: inline-block;
+  margin-left: 4px;
+  color: var(--accent);
+  font-size: 0.85em;
+  animation: page-wait 0.3s steps(2, start) infinite;
+}

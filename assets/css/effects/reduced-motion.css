@@ -1,0 +1,19 @@
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .post-list-entry:hover .entry-arrow,
+  :is(.keycap, .pagination a.page-link, .page-top):active {
+    transform: none !important;
+  }
+
+  .crt-overlay {
+    opacity: 0.12;
+  }
+}

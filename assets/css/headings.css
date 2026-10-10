@@ -1,0 +1,65 @@
+/* ======================== 标题 ========================
+ *   h1  墨色名牌（实色块反白字）
+ *   h2  荧光笔粗下划线
+ *   h3  ◆    h4  ◇    h5/h6  无标记
+ */
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+  font-family: inherit;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  scroll-margin-top: 1.5rem;
+}
+
+h1 { font-size: 1.25rem; font-weight: 700; }
+h2 { font-size: 1.125rem; font-weight: 700; }
+h3 { font-size: 1.0625rem; font-weight: 600; }
+h4 { font-size: 1rem; font-weight: 600; }
+h5 { font-size: 1rem; font-weight: 600; }
+h6 { font-size: var(--fs-sm); font-weight: 600; color: var(--ink-soft); letter-spacing: 0.04em; }
+
+article > h1 {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.1rem 0.65rem;
+  color: var(--slab-fg);
+  background: var(--slab-bg);
+  box-shadow: var(--lift) var(--lift) 0 var(--accent);
+}
+
+article > h2 {
+  width: fit-content;
+  background-image: linear-gradient(transparent 60%, var(--marker-strong) 60%);
+}
+
+article > :is(h3, h4)::before {
+  margin-right: 0.45em;
+  color: var(--accent);
+  font-size: 0.75em;
+  font-weight: 400;
+  vertical-align: 0.1em;
+}
+
+article > h3::before {
+  content: "◆";
+}
+
+article > h4::before {
+  content: "◇";
+}
+
+article :where(h3, h4, h5, h6):target {
+  color: var(--accent);
+}
+
+article > h1:target {
+  box-shadow: var(--lift) var(--lift) 0 var(--accent-2);
+}
+
+.site-description {
+  width: fit-content;
+  margin: 0;
+  color: var(--ink-soft);
+}

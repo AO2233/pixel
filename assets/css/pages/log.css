@@ -1,0 +1,18 @@
+/* ======================== 碎碎念 ========================
+ * 每条以墨色日期标签开头；标签本身就是分段，不再加分隔线。
+ */
+/* display: table：独占一行、宽度贴合文字（标签母题默认是 inline-block，
+ * 后面紧跟行内内容时会挤到同一行）。 */
+.log-page article > h2 {
+  display: table;
+  margin: var(--space-section) 0 0.75rem;
+  font-size: var(--fs-xs);
+}
+
+.log-page article > h2::before {
+  content: none;
+}
+
+.log-page article > h2:first-child {
+  margin-top: 0;
+}

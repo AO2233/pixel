@@ -1,0 +1,35 @@
+/* ======================== 像素字体 ========================
+ * 授权说明见 FONT_NOTICE.md。路径相对于打包后的 css/pixel.css。
+ */
+
+/* https://github.com/SolidZORO/zpix-pixel-font（12px，混合版） */
+@font-face {
+  font-family: "ZpixA";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/zpix_fusion.woff2") format("woff2");
+}
+
+/* https://github.com/TakWolf/fusion-pixel-font（12px） */
+@font-face {
+  font-family: "fusion";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/fusion.woff2") format("woff2");
+}
+
+/* 代码 / 界面拉丁字形 */
+@font-face {
+  font-family: "DOS";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Fixedsys500c.woff") format("woff");
+}
+
+/* 代码 / 界面中日文字形 */
+@font-face {
+  font-family: "DOS-c";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/ipix.woff2") format("woff2");
+}

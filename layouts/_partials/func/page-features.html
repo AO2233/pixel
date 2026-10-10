@@ -1,0 +1,16 @@
+{{- /*
+  Returns which optional assets a page needs.
+  Rendering .Content first lets render hooks (math, mermaid) record their use
+  in .Store before we decide what to load.
+*/ -}}
+{{- $page := . -}}
+{{- $_ := $page.Content -}}
+{{- $raw := $page.RawContent | default "" -}}
+{{- return dict
+  "aplayer" ($page.HasShortcode "aplayer")
+  "dplayer" ($page.HasShortcode "dplayer")
+  "pdf" ($page.HasShortcode "pdf")
+  "mermaid" (or ($page.HasShortcode "mermaid") ($page.Store.Get "hasMermaid"))
+  "math" ($page.Store.Get "hasMath")
+  "zoom" (or ($page.HasShortcode "img") (strings.Contains $raw "![") (strings.Contains $raw "<img"))
+-}}

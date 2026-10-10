@@ -40,7 +40,7 @@ Add the theme:
 git submodule add https://github.com/AO2233/pixel.git themes/pixel
 ```
 
-Then select it in your Hugo configuration:
+Pixel requires Hugo **0.146.0 or later** (the extended edition is not required). Then select it in your Hugo configuration:
 
 ```yaml
 theme: pixel
@@ -55,6 +55,24 @@ filename from the bundled [icon catalog](assets/icons/CATALOG.md) and use it as
 the `icon` value in `params.social`. Icons inherit the footer color in both
 light and dark mode. Add another SVG to the same directory to extend the set
 without adding client-side JavaScript.
+
+## Theme structure
+
+```text
+assets/css/          Theme styles, bundled into one fingerprinted file
+  tokens.css         Colors, type scale and spacing; dark mode overrides tokens only
+  base / layout / headings / article / media / code
+  components/        TOC, post list, pagination, collapsible, callout, spoiler
+  pages/ vendor/ effects/
+assets/js/main.js    Entry point, bundled with Hugo's esbuild (js.Build)
+assets/js/modules/   One module per feature (TOC, embeds, image reveal, ...)
+layouts/             Hugo ≥ 0.146 layout tree (_partials, _shortcodes, _markup)
+static/vendor/       Third-party libraries, loaded only on pages that need them
+```
+
+The cascade order of the CSS bundle is listed in `layouts/_partials/head/styles.html`.
+Builds with `hugo` (production) minify and fingerprint both bundles; `hugo server`
+serves them unminified for debugging.
 
 ## License and credits
 

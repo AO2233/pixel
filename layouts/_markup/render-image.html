@@ -1,0 +1,17 @@
+{{- $src := .Destination | relURL -}}
+{{- $isVideo := or (strings.HasSuffix $src ".mp4") (strings.HasSuffix $src ".webm") (strings.HasSuffix $src ".ogg") -}}
+<figure class="media-figure media-figure--wide">
+  {{- if $isVideo }}
+  <video class="media-item" src="{{ $src }}" controls preload="metadata">
+    Your browser does not support the video tag.
+  </video>
+  {{- with .Text }}
+  <figcaption class="caption">{{ . }}</figcaption>
+  {{- end }}
+  {{- else }}
+  <img src="{{ $src }}" alt="{{ .PlainText }}" class="zoom-image" decoding="async"{{ with .Title }} title="{{ . }}"{{ end }}>
+  {{- with .Title }}
+  <figcaption class="caption">{{ . }}</figcaption>
+  {{- end }}
+  {{- end }}
+</figure>
